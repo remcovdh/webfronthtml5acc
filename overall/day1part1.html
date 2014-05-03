@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <title>Part Javascript tools of Web front-end html5 acceleration course</title>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushXML.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day1part1.html">[2.1]</a>
+		</p>
+		<h2>Javascript tools (day 1, part 1)</h2>
+		<h3>Introduction</h3>
+		Later in this course we will dive deeper into the total workflow for writing high quality code. But we need to make a start right away. The tools we will use cover different aspect of the workflow and work on different levels, examples are:
+		<ul>
+			<li>Editor or IDE</li>
+			<li>Testing</li>
+			<li>JSHint</li>
+			<li>Debuging</li>
+			<li>Logging</li>
+			<li>Version control</li>
+			<li>Sharing</li>
+		</ul>
+		In the last paragraph we will combine the different tools and make it work in a basic workflow (and introduce a workflow runner).
+		<h3>Editor or IDE</h3>
+		You have a few different type of options to edit code / tests etc during this course. A lot of code will work in the 
+		standard text editor of choice. Another route can be to use an on-line editor of choice. And the more traditional choice will be a full blown IDE. Common choices are:
+		<ul>
+			<li>Code editors: Sublime text / Textmate</li>
+			<li>Online development environments: Plunker, CodePen, jsFiddle, jsBin <b>todo linkjes toevoegen</b></li>
+			<li>IDE's: Visual studio / Eclipse</li>
+		</ul>
+		Excercise: make very simple html, js, css file setup in you environment of choice
+		<h3>Testing</h3>
+			This is such an important subject that we devoted a few separte chapters on this topic. The first setup will be introduced directly after this part.
+<a href="http://shop.oreilly.com/product/9780596517748.do"> <img src="images/javascript_the_good_parts.jpg" align="right"> </a>
+		<h3>JSHint</h3>
+			One of the godfathers in the javascript community and javascript architect at Yahoo, Douglas Crowford, ones wrote jslint. That was a configurable parser/code checker. It contained a very opinionated view on which javascript contructs should and should not be used. To see it work <a href="http://www.jslint.com/">http://www.jslint.com/</a>. 
+			<p><i>JavaScript parser that can analyze a JavaScript program and report on the bad parts that it contains. JSLint pro- vides a degree of rigor that is generally lacking in JavaScript development. It can give you confidence that your programs contain only the good parts.</i></p>
+			Douglas Crowford is also writer of the rather small book: <a href="http://shop.oreilly.com/product/9780596517748.do">"javascript the good parts"</a>. A easier configurable and runner <a href="http://www.jshint.com/">http://www.jshint.com/</a>. The disadvantage of this tool is it is not configurable as a commandline tool.Therefore a new tool was build called jslint. <a href="linkie_todo">linkie_todo</a>. This jslint solution is fully integratable in your workflow.
+			
+		<h3>Debuging</h3>
+		Once there was firebug...oh new addon/plugin for firefox. This changed the world. With the tool you were able to:
+		<ul>
+			<li>inspect the live situation in a page</li>
+			<li>introspect the DOM</li>
+			<li>change DOM attributes on the fly</li>
+			<li>see the performance and network traffic of your page</li>
+			<li>etc. etc</li>
+		</ul>
+		<p>
+			Currently all main browser have these capabilities. The most used seems to be chrome at this moment. 
+		</p>
+		<p>
+		Excercise: take the development view of chrome, IE or firefox and get familiar with these capabilities. Load some of your favourite websites and see how they perform, how the DOM looks like and ... For a far more detailed explanation of the possibilities within chrome see. As being said on the page. Familiarity with this tool is almost neccessary from a front-end developer.
+		</p>
+		<p>
+		Excercise: save the file beneath and load it. See what is shown in the console.
+			<pre class="brush: xml;">
+				&lt;html&gt;
+					&lt;head&gt;
+						&lt;script type="text/javascript" src="vendor/not-found-script.js"&gt;&lt;/script&gt;
+					&lt;/head&gt;
+					&lt;body&gt;
+						&lt;h1>Goal of excercise&lt;/h1&gt;
+						The purpose of this excercise is to learn how the development tools of the browser work and how the help in debugging.
+					&lt;/body&gt;
+				&lt;/html&gt;
+			</pre>
+		Excercise: change the 3 line 
+			<pre class="brush: xml; highlight:3">
+				&lt;html&gt;
+					&lt;head&gt;
+						&lt;script type="text/javascript" src="found-script.js"&gt;&lt;/script&gt;
+					&lt;/head&gt;
+					&lt;body&gt;
+						&lt;h1>Goal of excercise&lt;/h1&gt;
+						The purpose of this excercise is to learn how the development tools of the browser work and how the help in debugging.
+					&lt;/body&gt;
+				&lt;/html&gt;
+			</pre>
+			And cut and paste the following in the file called found-script.js in the same directory as the html file above. Cut copy paste the script beneath:
+			<pre class="brush: javascript;">
+				a1 = "print in log: hello";
+				consol.log(a);
+			</pre>
+		</p>
+		<h3>Logging</h3>
+		We will start with a simplist start by logging at the browsers console.
+		<pre class="brush: javascript;">
+			console.log("the thing you want to log");</pre>
+		If this does not work in your browser you can include a more general function to do the same
+		<pre class="brush: javascript;">
+			check javascript ninja book</pre>
+		<h3>Version control</h3>
+		The main tool for doing version control of this moment. Especially in the opensource world is git. Git is a so called distributed version control system ..... (nog een mooie term niet eerst locken..). There is also a very popular server version where sources can be easily shared is github. This is for this course were all sources are stored. See <a href="http:\\github.com">github (todo testen)</a>
+		A flexible versioning is very important for a modern workflow and testdriven development. It helps you try things and makes merging new and refactored code into your central reporository easier. For everbody that is not familiair with the concepts of a distributed versioning system a small sub topic is added. We advice to do as homework if your are not familiar with it.
+		The basic set of commands for git during this course:
+		<ul>
+			<li>git clone</li>
+			<li>git add</li>
+			<li>git commit</li>
+			<li>git pull</li>
+			<li>..</li>
+		</ul>
+		TODO See git book (progit.en.pdf)
+    <a href="http://git-scm.com/book"><img src="images/pro-git.jpg" align="right"> </a>
+		Excercise: clone part 2
+		git clone https://github.com/remcovdh/webfronthtml5acc.git 
+		
+		MAke a start git confi
+		E.g.
+		$ git config --global user.name "John Doe"
+		$ git config --global user.email johndoe@example.com
+		
+		<h3>Sharing</h3>
+		Off course another part of learning is sharing information together. This will be of now issue during the get together of this course but it would be nive to have some other way to be able to work together offline/a-synchrously. To do this we will use ...
+		
+		<h3>Workflow / automating task</h3>
+		This were quite a few tools and technics. We need to make this tools work together in an automated fashion as much as possible. The predomenantly justed tool for running tasks is grunt. In the minimal workflow we want to start with 
+		<ol>
+			<li>get the code that belongs to a lesson</li>
+			<li>write tests</li>
+			<li>run all tests</li>
+			<li>write code</li>
+			<li>run all tests</li>
+			<li>write code</li>
+			<li>run code</li>
+		</ol>
+		Excercise: install node
+		Excercise: install grunt (yeoman)
+		Excercise: copy workflow runner file adjust config and start
+		
+

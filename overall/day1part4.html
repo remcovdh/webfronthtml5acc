@@ -1,0 +1,180 @@
+<html>
+  <head>
+    <title>Part Functional Javascript of Web front-end html5 acceleration course</title>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day1part1.html">[2.1]</a>
+		</p>
+		<img align="right" src="images/secrets_of_the_javascript_ninja.jpg"> 
+		<h2>Javascript a functional language (day 1, part 4)</h2>
+		<h3>What does that mean javascript is a functional language?</h3>
+		<p>A language is mostly called a functional language when functions are first class citizens (objects). But what does it mean, quoted from the Javascript Ninja book:</p>
+		<ul>
+			<li>They can be created via literals</li>
+			<li>They can be assigned to variables, array entries, and properties of the other objects</li>
+			<li>They van be passed as arguments to functions</li>
+			<li>The can be returned as values from functions</li>
+			<li>They can posses properties that can be dynamically created and assigned</li>
+		</ul>
+		But bottom-line for a programmer what are the consequences or extra possibilities:
+		<ol>
+			<li>Functional programs contain (mostly) idempotent and side effects free functions</li>
+			<li>Functional programs leads to better readable code</li>
+			<li>Functional programs has something called closures</li>
+		</ol>
+		<h3>Idempotent and side effect free functions</h3>
+		<p>
+			The advantages of functions being idempotent is: the behaviour is fixed and therefore can be tested easily. 
+		Functions have no internal state and an input will always deliver the same output.
+		Also if the input is fed to the functions more than ones.</p>
+		
+		<p><b>But on the other hand</b> in javascript you can program in different styles. 
+		You do not have to use the functional style. You can work prodedural and object oriented as well altough it is advised
+		to make use of the functional possibilities of javascript.</p>
+		<p><b>And also</b> what is a program without side effects? We want 
+		to change things in our environment so we need side effect. On the opposit side altough side effects are usefull and neccessary it is important to convey the changes and separate these cases from the rest of your logic as much as possible.</p>
+		<p>An example in procedural/objectoriented style:</p>
+		<pre class="brush: javascript;">
+			function totalList1(aListOfElements) {
+			  total = 0;
+			  for (i=0; i < aListOfElements.length;i++)
+			    {
+					  total = total + aListOfElements[i];
+			    }
+			  return total; 
+			};
+			
+			function onclick1() {
+				listOfElements = [2,6,2,4,9,0,2];
+				alert(totalList1(listOfElements));
+			}
+		</pre>
+		<script type="text/javascript">
+			function totalList1(aListOfElements) {
+			  total = 0;
+			  for (i=0; i < aListOfElements.length;i++)
+			    {
+					  total = total + aListOfElements[i];
+			    }
+			  return total; 
+			};
+			
+			function onclick1() {
+				listOfElements = [2,6,2,4,9,0,2];
+				alert(totalList1(listOfElements));
+			}
+		</script>
+		<button onclick="onclick1();">Click to test onclick1!</button>
+		<p>A more functional approach:</p>
+		<pre class="brush: javascript;">
+			function totalList2(aListOfElements) {
+				if aListOfElements.length > 0
+					return (aListOfElements[0]+totalList2(aListOfElements.slice(1)));
+			};
+			
+			listOfElements = [5,1,9,0,12,-1,21];
+			alert(totalList2(listOfElements));
+		</pre>
+		<script type="text/javascript">
+		function totalList2(aListOfElements) {
+			if (aListOfElements.length > 0) {
+				return (aListOfElements[0]+totalList2(aListOfElements.slice(1)));
+			} else {
+				return 0;
+			}
+		};
+		function onclick2() {
+			listOfElements = [5,1,9,0,12,-1,21];
+			alert(totalList2(listOfElements));
+		}
+		</script>
+		<button onclick="onclick2();">Click to test onclick2!</button>
+		<p>
+			As you can see is there a big difference with both solutions. It shouldn't be said that one solution is better than the
+			other but they are certainly different. An advantage of the functional approach it doesn't introduce new variable like "i", and "total". The risk with introducing these extra variables is they can be changed in a way outside your perception. The reason the risk are bigger in javascript is some strange (or even bad) characteristics of javascript.
+		</p>
+		<p>
+	  A first mistake that is variable in javascript not declared with "var" are global! Of course this is a bad convention. Variable should be local by default and global on request. This is not the case in javascript. An improvement of the script above is:
+		</p>
+		<pre class="brush: javascript;">
+			function totalList1(aListOfElements) {
+			  var total = 0;
+			  for (var i=0; i < aListOfElements.length;i++)
+			    {
+					  total = total + aListOfElements[i];
+			    }
+			  return total; 
+			};
+		</pre>
+		<p>
+			But even when these variables are declared local "total" and "i" can still be changed during the for loop. It this very simple example these risks are rather low. But when we have more steps in our for loop or even calling other functions with the "i" and "total" as parameters these risks increase. 
+		</p>
+		<h3>Functional code is more readable</h3>
+		<p>
+		In procedural code and even in object code including the example above a functional approach directly handles "what" we want to solve and hides away "how" we want to reach our goal. This in comparison to some more boilerplate code of the state handling and looping in the other example. But this can be stretched even futher, because reducing a list into one value is such a commen task (max, min, mean etc are other common questions from a list) more functional libraries contain a reduce function. An very commonly used library for this is underscore.js or it's more modern variant lowdash. See <a href="http://underscorejs.org/#reduce">http://underscorejs.org/#reduce</a> for undescores documentation. Using this library the code will look like this:
+		</p>
+		<pre class="brush: javascript;">
+			function totalList3(aListOfElements) {
+				return (_.reduce(aListOfElements, function(memo, num){ return memo + num; }, 0))
+			};
+			function onclick3() {
+				listOfElements = [7,2,29,-3,-9];
+				alert(totalList3(listOfElements));
+			}
+		</pre>
+		<script type="text/javascript">
+		function totalList3(aListOfElements) {
+			return (_.reduce(aListOfElements, function(memo, num){ return memo + num; }, 0))
+		};
+		function onclick3() {
+			listOfElements = [7,2,29,-3,-9];
+			alert(totalList3(listOfElements));
+		}
+		</script>
+		<button onclick="onclick3();">Click to test onclick3!</button>
+		<p>
+			Of course what is a better read is always partly based on what you are used to and will be based on your own context. The underscore's notation of using a '_' as naming convention for there library is likely to be disliked by a lot of programmers because they are not used to it (and it is a rather strange library naming conventions). Another thing is the reduce function. Programmers comming / having used more functional style programming language will probably find this construct much easier to comprehend as programmers who see this for the furst time. 
+In this last example it is rather strange to abstract our logic in a new function. A would most likely write:
+		</p>
+		</p>
+		<script type="text/javascript">
+		function onclick4() {
+			listOfElements = [5,-31,18,7,-1];
+			alert(_.reduce(listOfElements, function(memo, num){ return memo + num; }, 0));
+		}
+		</script>
+		<pre class="brush: javascript;">
+			function onclick4() {
+				listOfElements = [5,-31,18,7,-1];
+				alert(_.reduce(listOfElements, function(memo, num){ return memo + num; }, 0));
+			}
+		</pre>
+		<button onclick="onclick4();">Click to test onclick4!</button>
+		<h3>Closures</h3>
+		<p>
+			The first thing to be answered. What is a closure? See for example <a href=" http://en.wikipedia.org/wiki/Closure_(computer_programming)">wiki about closures</a>. As you can see in the wiki page closures are all about which variables are in scope and when. Closures have to power to have a scope that is like a (temporary) buble in which we can operate. These charateristics define also the majority of the use-cases in which closures are typically used. These typical use-cases in javascript are: 
+		</p>
+		<ol>
+			<li>Creating private variables</li>
+			<li>Use in callbacks</li>
+			<li>Immediate functions</li>
+		</ol>
+		See also <a href="http://speakingjs.com/es5/ch01.html#_closures">http://speakingjs.com/es5/ch01.html#_closures</a>
+  </body>
+</html>

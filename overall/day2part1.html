@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 2)</title>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushXML.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day1part1.html">[2.1]</a>
+		</p>
+		<h2>Get sensory</h2>
+		<h3>The camera and the micorphone</h3>
+		A long time the only way to get to the sensory interfaces would be using things like flash. In this course we will look at two solution. The first one is HTML media capture
+
+HTML Media Capture was the DAP's first go at standardizing media capture on the web. It works by overloading the &lt;input type="file"&gt; and adding new values for the accept parameter. THis are the variations.
+	<pre class="brush: xml;">
+		<input type="file" accept="image/*;capture=camera"></pre>
+	<pre class="brush: xml;">
+		<input type="file" accept="video/*;capture=camcorder"></pre>
+	<pre class="brush: xml;">
+		<input type="file" accept="audio/*;capture=microphone">	</body></pre>
+	<p>	
+	Altough this looks as a rather fine method. It has the disadvantage that it can only use the resulting file. There is no way to adjust the data directly.
+	</p>
+	<p>	
+	A nice background article with much more details is: <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">http://www.html5rocks.com/en/tutorials/getusermedia/intro/</a>
+	</p>
+	<p>	
+	Excercise: use this input field in 
+	</p>
+</html>
+
+
+
+
+
+
+
+
+

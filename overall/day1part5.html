@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <title>Part Javascript basics of Web front-end html5 acceleration course</title>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day1part1.html">[2.1]</a>
+		</p>
+		<h2>Start building a single page application (day 1, part 5)</h2>
+		<h3>Let's start building</h3>
+		In this course we promised to build an application. So let's do as promised.
+		We will re-use some of the excercises we already made.
+		
+		What are the usecases of demo application:
+		<ul>
+			<li>Present a multimedia presentation.</li>
+			<li>Upload multimedia items.</li>
+			<li>Add and delete multimedia items to a presentation</li>
+			<li>Determine the position, height and width of videos and pictures in a presentation</li>
+			<li>Determine length in time and loudness of sounds and videos in a presentation</li>
+			<li></li>
+		</ul>
+		There are a few terms used previously that need some definition:
+		<ul>
+			<li>Mulltimedia items are sounds, videos and or picures/images</li>
+		</ul>
+		Lets start with making a extreemly simple presentation. But of course we start thinking about the requirements and therefore tests.
+		The first presentation display 3 different pictures in a timely fashion
+		Let's say that the presentation is represented by
+		
+		<pre class="brush: javascript;">
+		{
+			name: 'first presentation',
+			display: [
+			{ time: ["0:01","0:25"],
+				url: "http:\\....."
+			}, 
+			{ time: ["0:28","0:45"],
+				url: "http:\\....."
+			}, 
+			{ time: ["0:46","1:05"],
+				url: "http:\\....."
+			}, 
+			]
+		}
+		</pre>
+		<p>
+		Excercise: describe a time based test
+		</p>
+		<p>
+		Excercise: use a Timer function to show the different items. 
+		</p>
+		<p>
+		Excercise: add an argument to the previous list, which describes the type of mediapresentation
+		</p>
+		<p>
+		Excercise: show the mediapresentation.
+		</p>
+		<h3>Single page application</h3>
+		<p>
+		The previous excercises don't feel like a application. It had almost no interaction it its user-interface it just displays the presentation. So let's start with a starting screen.
+		</p>
+		<p>
+		Excercise: make a start screen with two options: "run presentation once" and "run presentation continously"
+		</p>
+		<p>
+			Some theory about single page applications
+		</p>
+		
+		
+	</body>
+</html>
