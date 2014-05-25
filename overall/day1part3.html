@@ -83,8 +83,9 @@
 			// No and and or but '&&' and  '||'
 			if (a && b) {//if both true do something}
 			if (a || b) {//if one of them true do something}
-			if (a === b) {//do something if they are equal and of the same type}
-		</pre>
+			
+			// Triple! equal sign
+			if (a === b) {//do something if they are equal and of the same type}</pre>
 		<br />
 		Equality operators: 
 		About using the strict equality version (triple equal sign):
@@ -144,14 +145,49 @@
 		Prototype (todo for example javascript ninja 6.1 en 6.2)
 		<h3>Javascript, basic characteristics</h3>
 		<ul>
-			<li>dynamic</li>
-			<li>functional</li>
-			<li>interpreted</li>
-			<li>single threaded (.....webworkers)</li>
-			<li>other?</li>
+			<li>
+				Dynamicly type, resulting in <a href="http://en.wikipedia.org/wiki/Duck_typing">Duck typing (at runtime)</a>. In practice this results that lesser attention is needed if something is of the right type as long as it supports the right attributes and behaviour.
+			</li>
+			<li>Functional (next chapter)</li>
+			<li>
+				Interpreted (discuss consequences)
+			</li>
+			<li>Single threaded (.....webworkers)</li>
+			<li>Other?</li>
+			<ul>
+				<li>Not really javascript but important for this course runs in the browser</li>
+				<li>Invented in days</li>
+				<li>Runs everywhere (was the statement of java)</li>
+			</ul>
 		</ul>
+		<a href="http://sweetjs.org/"><img src="images/Sweetjs.png" align="right"> </a>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			Check out <a href="http://sweetjs.org/">http://sweetjs.org/</a>
+			<br />
+			<br />
+		</div>
+		<br />
+		<p class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
 		</p>
-		<h3>Ecma</h3>
-		Deadly naming
+		<h3>Ecmascript</h3>
+		<p>
+			Deadly naming. Was only a working title but did not change later. Javascript the name which most people used was owned by 
+		Sun. 
+		</p>
+		Ecma is the standardisation institution, because at the time the World Wide Web Consortium (W3C) did not want to set this standard.
+		<p>
+		Current version used by most browser is ECMA-262, edition 5. And in Chrome and Firefox strive towards version 6. 
+		</p>
+		<p>
+			The Sixth Edition adds significant new syntax for writing complex applications, including classes and modules, but defines them semantically in the same terms as ECMAScript 5 strict mode. Other new features include iterators and for/of loops, Python-style generators and generator expressions, arrow functions, binary data, collections (maps, sets and weak maps), and proxies (metaprogramming for virtual objects and wrappers).
+		</p>
+		One intresting option is a javascript pre-compiler <a href="https://github.com/google/traceur-compiler">https://github.com/google/traceur-compiler</a> which is as it states: Traceur is a JavaScript.next-to-JavaScript-of-today compiler.
+		<a href="https://github.com/google/traceur-compiler"><img src="images/Traceur.png" align="right"> </a>
+		
 	</body>
 </html>

@@ -1,19 +1,18 @@
-Maak een game met blokjes die verdubbelen (alla 2048)
+Maak een game met blokjes die vergroten door botsen
 Maar je hebt kleine en grote blokjes nodig om door een veld te komen
 
 Besturing links rechts is switchen van blokje
 Naar boven is jump 
 Naar beneden is uit de weg gaan (als dat kan)
-Switch is andere toets (spatiebalk) waarbij je het gedrag switch (je kan ook in menumode raken in fase 2)
 
+Switch is andere toets (spatiebalk) waarbij je het gedrag van een blokje kan wijzigen
 Heel simpel speelveld waarin wel het puzzel idee volledig moet worden waar
 
 Dus een klein en groot sluisje en obstakel en gat (onder midden hoog)
 
-
-
 Maak blokje 
 Verplaats blokje elke cycle
+
 Colleshion detection (uitzoeken voor goede oplossing)
 
 
