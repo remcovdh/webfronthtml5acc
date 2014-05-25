@@ -1,21 +1,45 @@
 
-function linefigure(actxt, acolor, points) {
+
+function skyline(grlvl) {
+	var theskyline = [];
+  var distanceprevious;
+	var buildingwidth;
+	var buildingheight;
+	var agrlvl = grlvl - 4;
+	var startXpoint = 5; 
+	while (startXpoint < canvas.width) {
+		distanceprevious = (Math.random() * 10) - 5;
+		buildingwidth = Math.random() * 20 + 5;
+		
+		var a = Math.abs(startXpoint - (canvas.width / 3));
+		var b = (-1 * (a - (2 * (canvas.width / 3)))) / canvas.width;
+		var c = 300 * b;
+		
+		buildingheight = Math.random() * c + (20 * (b+1)) ;
+		theskyline.push([startXpoint + distanceprevious, agrlvl ]);
+		theskyline.push([startXpoint + distanceprevious, agrlvl - buildingheight ]);
+		theskyline.push([startXpoint + distanceprevious + buildingwidth, agrlvl - buildingheight ]);
+		theskyline.push([startXpoint + distanceprevious + buildingwidth, agrlvl ]);
+		startXpoint = startXpoint + distanceprevious + buildingwidth;
+	}
+	return theskyline;
+}
+
+function linefigure(actxt, acolor, origin, points) {
 	actxt.strokeStyle = acolor;
 	
   actxt.beginPath();
-	actxt.moveTo(points[0][0],points[0][1]);
-	for (var i = 1; i < (points.length); i++) { 
+	actxt.moveTo(origin[0],origin[1]);
+	for (var i = 0; i < (points.length); i++) { 
 		actxt.lineTo(points[i][0],points[i][1]);
 	}
-	actxt.fillStyle = 'lightgreen';
+	actxt.fillStyle = acolor;
 	// actxt.fillStyle = '#8ED6FF';
 	actxt.fill();
   actxt.closePath();
 	
 	actxt.stroke();
 }
-
-
 
 function makeCloud2(actxt, acolor, origin, points) {
 	actxt.beginPath();
@@ -34,7 +58,6 @@ function makeCloud2(actxt, acolor, origin, points) {
 	actxt.strokeStyle = 'blue';
 	actxt.stroke();
 }
-
 
 function makeCloud3(actxt, acolor, origin, points) {
 	actxt.beginPath();
