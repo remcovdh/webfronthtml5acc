@@ -1,6 +1,7 @@
 <html>
   <head>
-    <title>Part Javascript tools of Web front-end html5 acceleration course</title>
+    <title>Part Javascript development tools of Web front-end html5 acceleration course</title>
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
 		<script type="text/javascript" src="vendor/underscore-min.js"></script>
@@ -20,19 +21,24 @@
 			<a href="day1part3.html">[1.3]</a>
 			<a href="day1part4.html">[1.4]</a>
 			<a href="day1part5.html">[1.5]</a>
-			<a href="day1part1.html">[2.1]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
 		</p>
-		<h2>Javascript tools (day 1, part 1)</h2>
+		<h2>Javascript development  tools (day 1, part 1)</h2>
 		<h3>Introduction</h3>
-		Later in this course we will dive deeper into the total workflow for writing high quality code. But we need to make a start right away. The tools we will use cover different aspect of the workflow and work on different levels, examples are:
+		Later in this course we will dive deeper into the total workflow for writing high quality code. But we need to make a start right away. The tools we will use cover different aspects of the workflow and work on different levels, examples are:
 		<ul>
 			<li>Editor or IDE</li>
+			<li>JSHint, JSLint</li>
 			<li>Testing</li>
-			<li>JSHint</li>
-			<li>Debuging</li>
-			<li>Logging</li>
+			<li>Browser</li>
+				<ul>
+					<li>Debuging</li>
+					<li>Logging</li>
+				</ul>
 			<li>Version control</li>
 			<li>Sharing</li>
+			<li>Running tasks</li>
 		</ul>
 		In the last paragraph we will combine the different tools and make it work in a basic workflow (and introduce a workflow runner).
 		<h3>Editor or IDE</h3>
@@ -40,35 +46,115 @@
 		standard text editor of choice. Another route can be to use an on-line editor of choice. And the more traditional choice will be a full blown IDE. Common choices are:
 		<ul>
 			<li>Code editors: Sublime text / Textmate</li>
-			<li>Online development environments: Plunker, CodePen, jsFiddle, jsBin <b>todo linkjes toevoegen</b></li>
+			<li>Online development environments: 
+				<ul>
+					<li><a href="http://plnkr.co/">Plunker (http://plnkr.co/)</a></li>
+					<li><a href="http://codepen.io/">CodePen (http://codepen.io/)</a></li>
+					<li><a href="http://jsfiddle.net/">jsFiddle (http://jsfiddle.net/)</a></li>
+					<li><a href="http://jsbin.com/">jsBin (http://jsbin.com/)</a></li>
+				</ul>
 			<li>IDE's: Visual studio / Eclipse</li>
 		</ul>
-		Excercise: make very simple html, js, css file setup in you environment of choice
-		<h3>Testing</h3>
-			This is such an important subject that we devoted a few separte chapters on this topic. The first setup will be introduced directly after this part.
+		<div class='excercise'>
+			<br/>
+			<b>Excercise:</b> make a very simple html, js, css file setup in your environment of choice. And try one of the other choices.<br/>
+			<br/>
+		</div>
+		<br/>
+		<div class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</div>
+		<h3>JSLint and JSHint</h3>
 <a href="http://shop.oreilly.com/product/9780596517748.do"> <img src="images/javascript_the_good_parts.jpg" align="right"> </a>
-		<h3>JSHint</h3>
 			One of the godfathers in the javascript community and javascript architect at Yahoo, Douglas Crowford, ones wrote jslint. That was a configurable parser/code checker. It contained a very opinionated view on which javascript contructs should and should not be used. To see it work <a href="http://www.jslint.com/">http://www.jslint.com/</a>. 
 			<p><i>JavaScript parser that can analyze a JavaScript program and report on the bad parts that it contains. JSLint pro- vides a degree of rigor that is generally lacking in JavaScript development. It can give you confidence that your programs contain only the good parts.</i></p>
-			Douglas Crowford is also writer of the rather small book: <a href="http://shop.oreilly.com/product/9780596517748.do">"javascript the good parts"</a>. A easier configurable and runner <a href="http://www.jshint.com/">http://www.jshint.com/</a>. The disadvantage of this tool is it is not configurable as a commandline tool.Therefore a new tool was build called jslint. <a href="linkie_todo">linkie_todo</a>. This jslint solution is fully integratable in your workflow.
+			Douglas Crowford is also writer of the rather small book: <a href="http://shop.oreilly.com/product/9780596517748.do">"javascript the good parts"</a>. 
+		</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<ul>
+				<li>Let jshint inspect one of the previously made javascript code to hint on the bad parts of your script</li>
+			</ul>
+			<br/>
+		</div>
+		<br/>
+		<div class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</div>
+			
+			<p>
+			A easier configurable and runner <a href="http://www.jshint.com/">http://www.jshint.com/</a>. The disadvantage of this tool is it is not configurable as a commandline tool.Therefore a new tool was build called jslint. This jslint solution is fully integratable in your workflow (as we will do integrate it later).
+		</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercise:</b><br/>
+				<ul>
+				<li>
+					Run the following command on the prompt to install jshint:<br/>
+					$ npm install jshint
+				</li>
+				<li>Run jslint against one of your previously made javascripts</li>
+			</ul>
+			<br/>
+		</div>
+		<h3>Testing</h3>
+			This is such an important subject that we devoted a few separte chapters on this topic. The first setup will be introduced directly after this part.
+		<h3>Browser</h3>
+			The amazing tools of the browser. Once there was firebug. This was for the time an awesome new addon/plugin for firefox. It changed the world, finally you code see what was acctually happining in the browser and DOM. Currently the most common used environment for developers seems to be Chrome, but most major browser have similar capabilitites. In chrome unlock them via "View", "Developer", "Developer tools", <img src="images/developertools.png" align="right">. Or press ctrl and click on an element on a page. This results in a select window. Select 'inspect element'. For a far more detailed description see <a href="https://developer.chrome.com/devtools/index">https://developer.chrome.com/devtools/index</a>or see the chrome course <a href="http://discover-devtools.codeschool.com/">http://discover-devtools.codeschool.com/</a>
+			<br/>
+			<ul>
+				<li>Inspection</li>
+				<li>Console</li>
+				<li>Try on repl</li>
+				<li>Profiling</li>
+				<li>Debug</li>
+				<li>Emulation</li>
+			</ul>
+			<div class='excercise'>
+				<br/>
+				<b>Excercise:</b>
+				<br/><br/>
+				Select a external (complex website) and simpel website (like this one) to test the tooling for the inspection, profiling functions<br/>
+				<ul>
+					<li>Start from a single element</li>
+					<li>Have the developer console open and select the different views. In some views it is convenient to reload the page</li>
+					<ul>
+						<li>Profile network traffic</li>
+						<li>Inspect elements on the page</li>
+						<li>Adjust a few elements (size, position color etc)</li>
+						<li>Emulate different browser</li>
+					</ul>
+				</ul>
+				<br/>
+				Select the console and make next excersises:<br/>
+				<ul class='excercise'>
+					<li>Run small script on the repl (e.g. implement small function that is being called)</li>
+					<li>Logs something on the console (e.g. for next loop that logs 'I am happy' 5 times)</li>
+				</ul>
+				<br/>
+			</div>
+			<br/>
+			<div class='excercise'>
+				<br/>
+				<b>Sharing results</b><br/>
+				<br/>
+			</div>
 			
 		<h3>Debuging</h3>
-		Once there was firebug...oh new addon/plugin for firefox. This changed the world. With the tool you were able to:
-		<ul>
-			<li>inspect the live situation in a page</li>
-			<li>introspect the DOM</li>
-			<li>change DOM attributes on the fly</li>
-			<li>see the performance and network traffic of your page</li>
-			<li>etc. etc</li>
-		</ul>
-		<p>
-			Currently all main browser have these capabilities. The most used seems to be chrome at this moment. 
-		</p>
-		<p>
-		Excercise: take the development view of chrome, IE or firefox and get familiar with these capabilities. Load some of your favourite websites and see how they perform, how the DOM looks like and ... For a far more detailed explanation of the possibilities within chrome see. As being said on the page. Familiarity with this tool is almost neccessary from a front-end developer.
-		</p>
-		<p>
-		Excercise: save the file beneath and load it. See what is shown in the console.
+		As debugging is an essential tool for every developer. Let's dive into this a little deeper.
+
+		<div class='excercise'>
+			<br/>
+			<b>Excercise:</b>
+			<br/><br/>
+			Save the file beneath and load it. See what is shown in the console.
+			<br/><br/>
+		</div>
 			<pre class="brush: xml;">
 				&lt;html&gt;
 					&lt;head&gt;
@@ -80,7 +166,14 @@
 					&lt;/body&gt;
 				&lt;/html&gt;
 			</pre>
-		Excercise: change the 3 line 
+		</p>
+		<div class='excercise'>
+				<br/>
+				<b>Excercise:</b>
+				<br/><br/>
+				Change the 3 line 
+				<br/><br/>
+		</div>
 			<pre class="brush: xml; highlight:3">
 				&lt;html&gt;
 					&lt;head&gt;
@@ -98,50 +191,163 @@
 				consol.log(a);
 			</pre>
 		</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<br/><br/>
+			Debug the previous script and make it work by setting breakpoints, step through, and run from breakpoints options
+			<br/><br/>
+		</div>
 		<h3>Logging</h3>
-		We will start with a simplist start by logging at the browsers console.
+		As you probably found out in the previous excercise (or while peaking foward).
 		<pre class="brush: javascript;">
-			console.log("the thing you want to log");</pre>
-		If this does not work in your browser you can include a more general function to do the same
-		<pre class="brush: javascript;">
-			check javascript ninja book</pre>
+			console.log("the thing you want to log");
+		</pre>
+			<p class='excercise'>
+				<br/>
+				<b>Sharing results</b><br/>
+				<br/>
+			</p>
 		<h3>Version control</h3>
-		The main tool for doing version control of this moment. Especially in the opensource world is git. Git is a so called distributed version control system ..... (nog een mooie term niet eerst locken..). There is also a very popular server version where sources can be easily shared is github. This is for this course were all sources are stored. See <a href="http:\\github.com">github (todo testen)</a>
-		A flexible versioning is very important for a modern workflow and testdriven development. It helps you try things and makes merging new and refactored code into your central reporository easier. For everbody that is not familiair with the concepts of a distributed versioning system a small sub topic is added. We advice to do as homework if your are not familiar with it.
-		The basic set of commands for git during this course:
-		<ul>
-			<li>git clone</li>
-			<li>git add</li>
-			<li>git commit</li>
-			<li>git pull</li>
-			<li>..</li>
-		</ul>
-		TODO See git book (progit.en.pdf)
-    <a href="http://git-scm.com/book"><img src="images/pro-git.jpg" align="right"> </a>
-		Excercise: clone part 2
-		git clone https://github.com/remcovdh/webfronthtml5acc.git 
-		
-		MAke a start git confi
-		E.g.
-		$ git config --global user.name "John Doe"
-		$ git config --global user.email johndoe@example.com
-		
+		<p>
+		The main tool for doing version control of this moment, especially in the opensource world is git. Git is a so called distributed version control system with strong emphasis on branching and merging instead of locking. A very popular server version where sources can be easily shared is github. We will use this for this course. See <a href="http:\\github.com">github</a> for more information. A flexible versioning is very important for a modern workflow and testdriven development. It helps you try things and makes merging new and refactored code into your central reporository easier. 
+		</p>
+		<p>
+		All accumulated information on this course is also collected on github. 
+		</p>
+		<p>
+			The basic set of commands for git during this course:
+			<ul>
+				<li>git clone</li>
+				<li>git add</li>
+				<li>git commit</li>
+				<li>git pull</li>
+				<li>..</li>
+			</ul>
+		</p>
+		An on-line book explaining git in far, far more detail, see <a href="http://git-scm.com/book">Pro git</a><br />
+		 <a href="http://git-scm.com/book"><img src="images/pro-git.jpg" align="right"> </a><br />
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<br/><br/>
+			Make a basic start git configuration</br>
+			$ git config --global user.name "John Doe"</br>
+			$ git config --global user.email johndoe@example.com</br>
+			<br/>
+			Clone the course information and update your personal information
+			<ul>
+				<li>administer an account on github</li>
+				<li>git clone https://github.com/remcovdh/webfronthtml5acc.git </li>
+				<li>edit the personal.html file for the information related to you</li>
+				<li>commit the new information to your local repository</li>
+				<li>do a git pull request to update the information in the central repository</li>
+				<li>after all updates are done (or meanwhile) checkout the latest difference between your local repository and the central repositry and sink your version with the central repository</li>
+			</ul>
+			<br/>
+		</div>
+			<p class='excercise'>
+				<br/>
+				<b>Sharing results</b><br/>
+				<br/>
+			</p>
 		<h3>Sharing</h3>
-		Off course another part of learning is sharing information together. This will be of now issue during the get together of this course but it would be nive to have some other way to be able to work together offline/a-synchrously. To do this we will use ...
+		Off course another part of learning is sharing information together. This will be of no issue during the get together of this course but it would be nive to have some other way to be able to work together offline/a-synchrously. To do this we will use ...
 		
 		<h3>Workflow / automating task</h3>
-		This were quite a few tools and technics. We need to make this tools work together in an automated fashion as much as possible. The predomenantly justed tool for running tasks is grunt. In the minimal workflow we want to start with 
-		<ol>
-			<li>get the code that belongs to a lesson</li>
-			<li>write tests</li>
-			<li>run all tests</li>
-			<li>write code</li>
-			<li>run all tests</li>
-			<li>write code</li>
-			<li>run code</li>
-		</ol>
-		Excercise: install node
-		Excercise: install grunt (yeoman)
-		Excercise: copy workflow runner file adjust config and start
+		This were quite a few tools and technics. We need to make this tools work together in an automated fashion as much as possible. The predomenantly used tool for running tasks is grunt, see <a href="http://gruntjs.com/">http://gruntjs.com/</a>. In the minimal workflow we want to start with we want our code be controlled by jshint and a page reload based on the changes we made.
+		<a href="http://gruntjs.com/"><img src="images/grunt-logo.png" align="right"> </a>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<br/><br/>
+			<ol>
+				<li>Call the following command on the prompt:<br/>
+					npm install -g grunt-cli</li>
+				<li>make a personal directory in the previous cloned git repository</li>
+				<li>in your personal directroy make a new directory to use grunt called day1part1</li>
+				<li>create in the day1part1 a very simple index.html</li>
+				<li>make two new files a grunt.js file and a package.json file in the day1part1 directory</li>
+				<li>make a new directory under day1part1 called app</li>
+				<li>make a empty javascript file in the new app directory called test.js</li>
+				<li>edit the simple index.html to include the test.js</li>
+				<li>in the json include the configured code as shown beneath</li>
+				<li>proof yourself that every change you make in either the javascript or index.html is immediately reflected in your browser</li>
+				<li>proof yourself that newly added javascript or html files are also immediately reflected in the browser</li>
+			</ol>
+			<br/>
+		</div>
+		<br/>
+		The package.json code
+		<pre class="brush: javascript;">
+			{
+				"name": "day1part1_[name]",
+				"version": "0.1.0",
+				"devDependencies": {
+					"grunt": "~0.4.4",
+					"grunt-contrib-connect": "~0.7.1",
+					"grunt-contrib-watch": "~0.6.1"
+				}
+			}
+		</pre>
+		The grunt.js code
+			<pre class="brush: javascript;">
+// Where did we get the information
+// http://gruntjs.com/getting-started grunt in general
+// https://github.com/gruntjs/grunt-contrib-watch for watching and to combine with reload
+// https://github.com/gruntjs/grunt-contrib-livereload reload hooks
+
+module.exports = function(grunt) {
+
+	// Project configuration.
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');	
+	
+	grunt.initConfig({
+		connect: {
+			server: {
+				options: {
+					// keepalive:true, grunt:connect:keepalive of zoiets kan nog wel
+					livereload: 35729,
+					port: 9002
+				}
+			},
+		},
+		watch: {
+			livereload: {
+				options: {
+					livereload: 35729
+				},
+				files: [
+					'{,*/views/}*.html',
+					'app/{,*/}*.js'
+				]
+			}
+		}
+	});
+
+	grunt.registerTask('default', 'Starting server and checking file changes', function() {
+		grunt.log.write('Starting server\n');
+		grunt.task.run('connect');
+		grunt.log.write('Server started\n');
+		grunt.log.write('Watch html and js file changes\n');
+		grunt.log.write('-html only root, /views/ and one subdir down\n');
+		grunt.log.write('-js files only in app and one subdir down\n');
+		grunt.task.run('watch');
+	});
+
+	grunt.registerTask('another', 'Log some stuff.', function() {
+		grunt.log.write('Logging some stuff...').ok();
+	});
+
+};
+		</pre>
+		<p class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<br/><br/>
+			As you probably found out is the jshint part not working yet. Although we (seem) to have all things available. The still need to be wired together. Adjust the 'another' task in the grunt file or add a new task to start of a test with jshint.
+			<br/><br/>
+		</p>
 		
 

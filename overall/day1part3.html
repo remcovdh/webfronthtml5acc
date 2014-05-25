@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Part Javascript basics of Web front-end html5 acceleration course</title>
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
 		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
@@ -18,7 +19,8 @@
 			<a href="day1part3.html">[1.3]</a>
 			<a href="day1part4.html">[1.4]</a>
 			<a href="day1part5.html">[1.5]</a>
-			<a href="day1part1.html">[2.1]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
 		</p>
 		<h2>Javascript basics (day 1, part 3)</h2>
 		<h3>Fortunately</h3>
@@ -42,6 +44,8 @@
 				<li>seperator</li>
 			</ul>
 		</p>
+
+		<h3>Assignement and creation, quirks and differences</h3>
 		Variables, declarations and literals: 
 		<pre class="brush: javascript;">
 			// variable declaration global
@@ -71,35 +75,83 @@
 					this.name = avar;
 			}}
 		</pre>
-		Some special remarks:<br/>
+		<h3>Strings: quirks and differences</h3>
 		JavaScript was built at a time when Unicode was a 16-bit character set, so all characters in JavaScript are 16 bits wide.
-		<p>
-Exercise 1-2: making a simple list (json) and test succeed
-		</p>
-		<p>
-Exercise 1-3: (testfirst ;-) making insert, delete, update possible on your list
-		</p>
-		<p>
-Exercise 1-4: improving our list to take complex values/objects. 
-This extra valuable because you need in the demo application to do something with the storage of mediaobjects.
-		</p>
-		<p>
 
-	Theory topics:
-	Basic categorizing as a language:
-	<ul>
-		<li>dynamic</li>
-		<li>interpreted</li>
-		<li>single threaded (.....webworkers)</li>
-	</ul>		
+		<h3>Operators: quirks and differences</h3>
+		<pre class="brush: javascript;">
+			// No and and or but '&&' and  '||'
+			if (a && b) {//if both true do something}
+			if (a || b) {//if one of them true do something}
+			if (a === b) {//do something if they are equal and of the same type}
+		</pre>
+		<br />
+		Equality operators: 
+		About using the strict equality version (triple equal sign):
+		Zakas says: "This helps to maintain data type integrity throughout your code.". See more information on the two type of equality <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Sameness">https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Sameness</a>. This is so because in the strict equality operator both the value and the type must be the same.
+		<p>
+		In JavaScript, the following values are considered to be falsy values:
+		<ul>
+			<li>false</li>
+			<li>0</li>
+			<li>null</li>
+			<li>"" (empty string)</li>
+			<li>NaN (Not a Number)</li>
+			<li>#ff0000</li>
+		</ul>
+		All other values of JavaScript can be safely assumed to be truthy values. Even an empty function, empty array and empty objects are also truthy.<br /><br />
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<br/>
+			Type the following statements in your browser
+			<ul>
+				<li>false == "0"</li>
+				<li>false === "0"</li>
+			</ul>
+			<br />
+		</div>
+		<br />
+		<h3>This: quirks and differences</h3>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<ul>
+				<li>Think (! not do) what will happen if you type the following in your browser console window as separate statements</li>
+				<ul>
+					<li>this</li>
+					<li>var x={intname: 'sander', name:function() {return this.intname}}</li>
+					<li>x.name</li>
+					<li>x.name()</li>
+				</ul>
+				<li>Type it to see if you are correct, check why differences occur</li>
+			</ul>
+			<br />
+		</div>
+		<br/><br/>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b>
+			<br/>
+			<ol>
+				<li>making a simple list (json) and test succeed</li>
+				<li>(testfirst ;-) making insert, delete, update possible on your list</li>
+				<li>improving our list to take complex values/objects</li>
+			</ol>
+			<br />
+		</div>
+		<h3>Object: quirks and differences</h3>
+		Prototype (todo for example javascript ninja 6.1 en 6.2)
+		<h3>Javascript, basic characteristics</h3>
+		<ul>
+			<li>dynamic</li>
+			<li>functional</li>
+			<li>interpreted</li>
+			<li>single threaded (.....webworkers)</li>
+			<li>other?</li>
+		</ul>
 		</p>
-
-Browser language?
-Consequences of running in a browser
-
-	
 		<h3>Ecma</h3>
 		Deadly naming
-		
 	</body>
 </html>
