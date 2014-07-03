@@ -22,6 +22,8 @@
 			<a href="day1part5.html">[1.5]</a>
 			<a href="day2part0.html">Start day 2</a>
 			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a><a href="day2part4.html">[2.4]</a><a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
 		</p>
 		<img align="right" src="images/SecretsOfTheJavascriptNinja.jpg"> 
 		<h2>Javascript a functional language (day 1, part 4)</h2>
@@ -198,5 +200,26 @@ In this last example it is rather strange to abstract our logic in a new functio
 			<br />
 			<br />
 		</div>
+		<h3>Memoization</h3>
+		TODO check if this is the right place (example copied partially from wikipedia => http://nl.wikipedia.org/wiki/Memoization)
+		<pre class="brush: javascript;">
+			function fib(n) {
+				if (n < 1) return 0;
+				if (n == 1) return 1;
+				return fib(n-1) + fib(n-2);
+			}
+			var fibCache = [];
+			function fib2(n) {
+				if (n < 1) return 0;
+				if (fibCache[n]) return fibCache[n];
+				if (n == 1) {
+					t = 1;
+				} else {
+					t = fib2(n-1) + fib2(n-2);
+				}
+				return fibCache[n] = t;
+			}
+			TODO toevoegen generieke oplossing mogelijkheid in javascript, see 5.5.1. Memoization solution javascript.
+		</pre>
   </body>
 </html>

@@ -1,42 +1,52 @@
 
-// Main game loop
 // Part of the web front-end html5 acceleration course
-
-// canvas attributes
-var canvas;
-var context;
+// Written by Remco
+// Minigame
+//
+// Main game loop
 
 // TODO Shoudl be removed when it's working continuously
 var cyclus = 1;
 
-var drawableobjects = [];
-var blokjes;
-var groundheight = 80;
+// TODO All these window level var's and function should be put under namespace
+var canvas;
+var context;
+
+var drawables;
+
+function getGameHeight() {
+	return canvas.height;
+}
+function getGameWidth() {
+	return canvas.width;	
+}
+function getGameGroundLevelY() {
+	return getGameHeight() - 80;
+}
+function getGameContext() {
+	return context;
+}
 
 function initAfterLoadPage() {
-	
 	// Init
-	canvas = document.getElementById('thecanvas');
+	canvas  = document.getElementById('thecanvas');
 	context = canvas.getContext('2d');
 
-	// Full page
-	canvas.width = window.innerWidth;
+	// Set canvas to full page
+	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
 
-	// TODO must be combined
-	var grlvl = canvas.height - groundheight;
-	blokjes = initBlocks(context, grlvl);
-	addObjects(drawableobjects, grlvl);
+	drawables = initDrawables(context, getGameGroundLevelY());
 
-	runner();
+	gameloop();
 }
 
 window.onkeypress = function(event) {
 	console.log('key code'+event.keyCode);
 	
-	for (var i = 0; i < (blokjes.length); i++) { 
-		if ((typeof blokjes[i].onkeypress !== 'undefined') )
-		blokjes[i].onkeypress(event);
+	for (var i = 0; i < (drawables.length); i++) { 
+		if ((typeof drawables[i].onkeypress !== 'undefined') )
+		drawables[i].onkeypress(event);
 	}
 }
 
@@ -44,28 +54,23 @@ window.onclick = function(event) {
 	console.log("clicked")
 }
 
-function runner() {
+function gameloop() {
 	cyclus = cyclus + 1;
 	if (cyclus < 500) {
 		setTimeout( function() {
 			redraw();
-			runner();
+			gameloop();
 		}, 50);
 	}
 }
 
 function redraw() {
+	for (var i = 0; i < (drawables.length); i++) { 
+		drawables[i].update();
+	}
 	clearSky();
 
-	for (var i = 0; i < (drawableobjects.length); i++) { 
-		drawableobjects[i].draw();
-	}
-
-	for (var i = 0; i < (blokjes.length); i++) { 
-		blokjes[i].update();
-	}
-	for (var i = 0; i < (blokjes.length); i++) { 
-		blokjes[i].redraw();
+	for (var i = 0; i < (drawables.length); i++) { 
+		drawables[i].redraw();
 	}
 }
-

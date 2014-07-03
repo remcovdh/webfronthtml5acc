@@ -1,20 +1,24 @@
-
-
+// Part of the web front-end html5 acceleration course
+// Written by Remco
+// Minigame
+//
 // Build an array pretending to look like a city skyline
 
-function skyline(grlvl) {
+function skyline() {
 	var theskyline = [];
   var distanceprevious;
 	var buildingwidth;
 	var buildingheight;
-	var agrlvl = grlvl - 4;
+	
+	var agrlvl = getGameGroundLevelY() - 4;
 	var startXpoint = 5; 
-	while (startXpoint < canvas.width) {
+	var theWidth = getGameWidth()
+	while (startXpoint < theWidth) {
 		distanceprevious = (Math.random() * 10) - 5;
-		buildingwidth = Math.random() * 20 + 5;
+		buildingwidth = Math.random() * 25 + 5;
 		
-		var a = Math.abs(startXpoint - (canvas.width / 3));
-		var b = (-1 * (a - (2 * (canvas.width / 3)))) / canvas.width;
+		var a = Math.abs(startXpoint - (theWidth / 3));
+		var b = (-1 * (a - (2 * (theWidth / 3)))) / theWidth;
 		var c = 300 * b;
 		
 		buildingheight = Math.random() * c + (20 * (b+1)) ;

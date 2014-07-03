@@ -1,3 +1,8 @@
+// Part of the web front-end html5 acceleration course
+// Written by Remco
+// Minigame
+//
+// Cloud like bezierCurves
 
 function cloudArray1() { 
 	var acloud = [[170, 80], [130, 100, 130, 150, 230, 150],
@@ -20,8 +25,8 @@ function cloudArray2() {
 	return acloud2;
 }
 
-
 function makeCloud2(actxt, acolor, origin, points) {
+	// this.origin = origin;
 	actxt.beginPath();
 	actxt.moveTo(points[0][0] + origin[0],points[0][1]  + origin[1]);
 	for (var i = 1; i < (points.length); i++) { 
@@ -51,12 +56,12 @@ function makeCloud3(actxt, acolor, origin, points) {
 	// complete custom shape
 	actxt.closePath();
 	actxt.lineWidth = 5;
-	
-	
-	var grd = context.createLinearGradient(origin[0], origin[1], origin[0]+200, origin[0]+50);
-	grd.addColorStop(0, '#FFFFFF');   // light blue
-	grd.addColorStop(1, '#111111');	// dark blue
-	context.fillStyle = grd;
+
+
+	var linearGradient = context.createLinearGradient(origin[0], origin[1], origin[0]+200, origin[0]+50);
+	linearGradient.addColorStop(0, '#FFFFFF');	// light blue
+	linearGradient.addColorStop(1, '#111111');	// dark blue
+	context.fillStyle = linearGradient;
 	context.fill();
 	
 	actxt.strokeStyle = 'gray';

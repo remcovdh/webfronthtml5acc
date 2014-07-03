@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 2)</title>
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushXML.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+		
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a><a href="day2part4.html">[2.4]</a><a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
+		</p>
+		<h2>Storing information in the client (day 2, part 3)</h2>
+		
+		<h2>Local storage in the DOM</h2>
+		This is a very simple api for storing key value pairs. The code is like this.
+		<pre class="brush: javascript;">localStorage["key"] = value;</pre>
+
+		The following restriction you need to be aware of in using localstorage:
+		<ol>
+			<li>It can only store strings, so you need to serialize/deserialize for more complex object storing strategies.</li>
+			<li>It is also not supported by all browser, but it is supported by the fast majority of browser out there.</li>
+			<li>Size limits (2,5 MB is the least known minimum)</li>
+			<li>It is bound to the domain (not the client). The same-origin rules applies.</li>
+			<li>Internet explorer from IE8+</li>
+		</ol>
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		<ol>
+			<li>Make a simple html, javascript page that counts the number of times you opened/refreshed the page</li>
+			<li>Add a button to clear the number</li>
+			<li>Check how this is represented in your development tools in the browser</li>
+		</ol>
+		<br />
+	</div>
+	<br />
+	<h2>IndexDB</h2>
+	<p>One of the major disadvantages of the local storage is the capacity. The tradeoff is between larger browser support or storage space. This all depends on the use-case. There were previously two other choices you could make when needing more space. There was Web SQL database. But this is depracted and therefore no longer a realy valid choice to be made. The other one is IndexDB. Although it's support is not widespread as is for local storage and still lacks full support in IE. It is working in IE10+ (see <a href="http://caniuse.com/#search=indexeddb">http://caniuse.com/#search=indexeddb</a> for a detailed supported on different browser versions and <a href="http://codepen.io/cemerick/pen/Itymi">http://codepen.io/cemerick/pen/Itymi</a> for a test script for different featurese of the api). </p>
+	<p>How does it work:
+		<ol>
+			<li>Start by opening the database</li>
+			<li>Creat an store for your objects</li>
+			<li>Start a transaction </li>
+			<li>Using the transaction request (async) to do something (crud like actions)</li>
+			<li>Wait and react (async) for the transaction to complete and do something with the result</li>
+		</ol>
+	</p>
+	
+	<pre class="brush: javascript;">
+	
+	</pre>
+	The example is based on
+	<a href="http://www.html5rocks.com/en/tutorials/indexeddb/todo/#">http://www.html5rocks.com/en/tutorials/indexeddb/todo/#</a>
+	To remove the contect in Chrome which was found to be partialary usefull when developing, see 	http://stackoverflow.com/questions/9384128/how-to-delete-indexeddb-in-chrome
+	<br />
+	Maybe a better example	<br />
+	http://code.tutsplus.com/tutorials/working-with-indexeddb--net-34673	<br />
+	http://code.tutsplus.com/tutorials/working-with-indexeddb-part-2--net-35355	<br />
+	http://code.tutsplus.com/tutorials/working-with-indexeddb-part-3--net-36220	<br />
+		<br />
+	Also intresting:	<br />
+	http://www.kristofdegrave.be/2012/08/indexeddb-keys-efficiently-retrieving.html	
+	Especially intresting because of the linq link<br />
+	http://dev.opera.com/articles/introduction-to-indexeddb/?utm_source=html5weekly&utm_medium=email
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		<ol>
+			<li>If you use another browser please check to find how to remove the indexDB</li>
+		</ol>
+		<br />
+	</div>
+</body>
+</html>

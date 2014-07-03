@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 2)</title>
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushXML.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+		
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a><a href="day2part4.html">[2.4]</a><a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
+		</p>
+		<h2>Get sensory (day 2, part 2)</h2>
+		<h3>The camera and the microphone</h3>
+		A long time the only way to get to the sensory interfaces would be using things like flash. In this course we will look at two solution. The first one is HTML media capture
+
+HTML Media Capture was the DAP's first go at standardizing media capture on the web. It works by overloading the &lt;input type="file"&gt; and adding new values for the accept parameter. This are the variations.
+	<pre class="brush: xml;">
+		<input type="file" accept="image/*;capture=camera"></pre>
+	<pre class="brush: xml;">
+		<input type="file" accept="video/*;capture=camcorder"></pre>
+	<pre class="brush: xml;">
+		<input type="file" accept="audio/*;capture=microphone">	</body></pre>
+	<p>	
+	Altough this looks as a rather fine method. It has the disadvantage that it can only use the resulting file. There is no way to adjust the data directly.
+	</p>
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		Use the input field technic to capture a sound, photo or video
+		<br />
+		<br />
+	</div>
+	<br />
+	<p class='excercise'>
+		<br/>
+		<b>Sharing results</b><br/>
+		<br/>
+	</p>
+	<p>
+		The other, more streaming, related solution uses getUserMedia() and is based on specs related to webrtc which we will dive into more detail later in this course. getUserMedia() has been supported since Chrome 21, Opera 18, and Firefox 17. TODO Check support by IE. It is good to put extra attention on this because this getUserMedia() is used for all kinds of sensory data and in connection interfaces as we will see later.
+	<pre class="brush: javascript;">
+		function isUserMedia() {
+		  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+		            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+		}
+
+		function alertUserMedia() {
+			if (isUserMedia()) {
+			  alert('getUserMedia() is supported by your browser, so lets go on');
+			} else {
+			  alert('getUserMedia() is not supported in your browser');
+			}
+		}
+	</pre>
+	<script type="text/javascript">
+		function isUserMedia() {
+		  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+		            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+		}
+
+		function alertUserMedia() {
+			if (isUserMedia()) {
+			  alert('getUserMedia() is supported by your browser, so lets go on');
+			} else {
+			  alert('getUserMedia() is not supported in your browser');
+			}
+		}
+	</script>
+
+	<button onclick="alertUserMedia();">Click to test if UserMedia is supported by the browser!</button>
+	<br />
+	<br />
+	The next example must be running as a server page. In the directory day2part2 you should be able to start with grunt on local host and show the index.html. After it is shown dive into the following files:
+	<ul>
+		<li>index.html which contain reference to the video style sheet, javascript code. Next to that it has a video tag and a button.</li>
+		<li>the javascript file: video.js. It contains two functions. The initVideo function sets up the video and an event handler to trigger of a new effect when clicked. The changeFilter function pick a new filter from the list and adds the affect to the element class list.</li>
+		<li>the javascript file: video.js. This contains the style for the video element and the list of filters. As you can see these filter definitions are still very browser oriented. A stylesheet pre-compiler (which will be shown later this course) is very helpfull in reducing the large amount of redundant code</li>
+	</ul>
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		Check the example, start it, check the code
+		<br />
+		<br />
+	</div>
+	<br />
+	
+	This works but also has quircks compared to native interfaces, as for exmple Bruce Lawson stated in <a href="http://html5doctor.com/getusermedia/">http://html5doctor.com/getusermedia/</a>:
+	<p>
+	<i> Things need refining before web apps with getUserMedia are on a par with native applications. At the moment, <del>there is no way of controlling which camera is to be used (and no agreement that a developer should be able to) </del>. The camera&rsquo;s flash mechanism isn&rsquo;t programmatically controllable, which could harm the user experience. Most importantly are the privacy implications of web pages being able to access your camera. Opera has an experimental privacy UI, but Chrome has no UI yet.</i>
+</p>
+	<p>	
+	A nice background article with much more details is: <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">http://www.html5rocks.com/en/tutorials/getusermedia/intro/</a>
+	</p>
+
+</html>
+
+
+
+
+
+
+
+
+

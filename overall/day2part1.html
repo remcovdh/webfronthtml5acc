@@ -1,15 +1,7 @@
 <html>
   <head>
-    <title>Web front-end html5 acceleration course (day 2)</title>
+    <title>Web front-end html5 acceleration course (day 1)</title>
 		<link type="text/css" rel="stylesheet" href="styles/style.css">
-		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
-		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
-		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
-		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
-		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushXML.js"></script>
-		<script type="text/javascript">
-		    SyntaxHighlighter.all();
-		</script>
 	</head>
   <body>
 		<p>
@@ -22,36 +14,38 @@
 			<a href="day1part5.html">[1.5]</a>
 			<a href="day2part0.html">Start day 2</a>
 			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a><a href="day2part4.html">[2.4]</a><a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
 		</p>
-		<h2>Get sensory</h2>
-		<h3>The camera and the micorphone</h3>
-		A long time the only way to get to the sensory interfaces would be using things like flash. In this course we will look at two solution. The first one is HTML media capture
-
-HTML Media Capture was the DAP's first go at standardizing media capture on the web. It works by overloading the &lt;input type="file"&gt; and adding new values for the accept parameter. THis are the variations.
-	<pre class="brush: xml;">
-		<input type="file" accept="image/*;capture=camera"></pre>
-	<pre class="brush: xml;">
-		<input type="file" accept="video/*;capture=camcorder"></pre>
-	<pre class="brush: xml;">
-		<input type="file" accept="audio/*;capture=microphone">	</body></pre>
-	<p>	
-	Altough this looks as a rather fine method. It has the disadvantage that it can only use the resulting file. There is no way to adjust the data directly.
-	</p>
-	<p>	
-	Excercise: use this input field in 
-	</p>
-	<p>
-		The other, more streaming, related solution uses getUserMedia() and is based on specs related to webrtc which we will dive into more detail later in this course. getUserMedia() has been supported since Chrome 21, Opera 18, and Firefox 17. TODO Check support by IE.
-		
-
-	<p>	
-	A nice background article with much more details is: <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">http://www.html5rocks.com/en/tutorials/getusermedia/intro/</a>
-	</p>
-
-
-  Bewaar om af te sluiten: http://learningthreejs.com/blog/2012/02/07/live-video-in-webgl/	
+		<h2>What is HTML5 (day 2, part 1)</h2>
+		<p>
+			HTML5 is browser driven change on the HTML specification. In reality this means features are developed by browser vendors (and community developers) which end up to become standardized and formalized in a later stage (or not). Therefore there was no clear specification on what is part of HTML5 on what is not for a long time. There was however a growing concessus of things that are clearly seen as part of it and what is not. Next to that there is a continuous different opinion between vendor browsers resulting in different implementations. 
+		</p>
+		<p>
+			<a href="http://www.w3.org/html/logo/">
+				<img src="images/HTML5_logo_and_wordmark_small.png" align="right">
+			</a>
+			A long list of the differences can be found at <a href="http://caniuse.com/">http://caniuse.com/</a>. A recent blog post about the status of the html5 standardization proces state can be found at 
+			<a href="http://www.w3.org/blog/2014/06/html5-on-our-way-to-recommendation/">http://www.w3.org/blog/2014/06/html5-on-our-way-to-recommendation/</a>
+		</p>
+			The W3C organization categorized the different changes that are (or beter can become) part of the HTML5 spec are: 
+			<ul>
+				<li>semantics</li>
+				<li>css3</li>
+				<li>multimedia</li>
+				<li>graphics and 3D</li>
+				<li>device access</li>
+				<li>performance</li>
+				<li>offline storage</li>
+				<li>connectivity</li>
+			</ul>
+		<p>As the title of this second part of this course already suggested HTML is not one specification or API or library. It is a wild west. In a nice graphical overview on the <a href="http://en.wikipedia.org/wiki/HTML5#New_APIs">wikipedia</a> helps in getting some overall view on this, although far not as up-to-date as the <a href="http://caniuse.com/">http://caniuse.com/</a> site.</p>
+		<br />
+			<a href="http://en.wikipedia.org/wiki/HTML5#New_APIs">
+							<img src="images/1024px-HTML5-APIs-and-related-technologies-by-Sergey-Mavrody.png" align="left">
+			</a>
+	</body>
 </html>
-
 
 
 

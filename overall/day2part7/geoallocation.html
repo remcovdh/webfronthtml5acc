@@ -1,0 +1,29 @@
+
+
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 2)</title>
+		<script>
+		function test() {
+			var x = document.getElementById("demo");
+			function getLocation() {
+			    if (navigator.geolocation) {
+						alert ("get to here!")
+			        alert (navigator.geolocation.getCurrentPosition(showPosition));
+			    } else {
+			        x.innerHTML = "Geolocation is not supported by this browser.";
+			    }
+			}
+			function showPosition(position) {
+			    x.innerHTML = "Latitude: " + position.coords.latitude + 
+			    "<br>Longitude: " + position.coords.longitude; 
+			}
+			showPosition(getLocation());
+		}
+		</script>
+	</head>
+  <body onload="test()">
+		<div id="demo"></div>
+  </body>
+</html>
+

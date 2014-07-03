@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function pageRefreshCounter() {
+				if (localStorage.pageRefreshCounter) {
+					localStorage.pageRefreshCounter = Number(localStorage.pageRefreshCounter) + 1;
+				} else {
+					localStorage.pageRefreshCounter = 1;
+				}
+				updateDiv();
+			}
+			function pageClearCounter() {
+				localStorage.pageRefreshCounter = 0;
+				updateDiv();
+			}
+			function updateDiv() {
+				testcountdiv = document.getElementById('testcounter');
+				pluralizer = "";
+				if (Number(localStorage.pageRefreshCounter) > 1) {
+					pluralizer = "s";
+				} 
+				testcountdiv.innerHTML = "Page refreshed/opened " +  localStorage.pageRefreshCounter + " time" + pluralizer;
+			}
+		</script>
+	</head>
+	<body onload="pageRefreshCounter()">
+		<div id="testcounter">Page refreshed/opened 0 time</div>
+		<button onclick="pageClearCounter()">Clear counter!</button>
+	</body>
+</html>

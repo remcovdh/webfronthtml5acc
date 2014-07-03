@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<script type="text/javascript" src="q.js"></script>
+		<script type="text/javascript">
+			function indexbdtest() {
+				// initalize
+				
+				var yourObjectStore = {indexedDB: {
+					// init db
+					db: null,
+
+					// open db
+					open: function() {
+						var version = 3;
+						
+						// TODO make this work (problem is different reation based on the fact that an upgrad is needed)
+						
+						Q.fcall(indexedDB.open("myobjects", version))
+						.then(function() {
+							yourObjectStore.indexedDB.db = e.target.result;
+							yourObjectStore.indexedDB.getAllObjects();
+							yourObjectStore.indexedDB.crudActions('added something');
+						})
+						.catch(function (error) {
+							alert('Wat fout gegaan'+error);
+						})
+						.done();
+
+						request.onupgradeneeded = function(e) {
+							var db = e.target.result;
+
+							// A versionchange transaction is started automatically.
+							alert("onupgradeneeded");
+							e.target.transaction.onerror = yourObjectStore.indexedDB.onerror;
+
+							if (db.objectStoreNames.contains("myobject")) {
+								 db.deleteObjectStore("myobject");
+							}
+
+							var store = db.createObjectStore("myobject",
+								{keyPath: "timeStamp"});
+						};
+					},
+					
+					getAllObjects: function() {
+						alert("get all objects please");
+						var trans = yourObjectStore.indexedDB.db.transaction(["myobject"], "readwrite");
+						var store = trans.objectStore("myobject");
+
+						// Get everything in the store;
+						var keyRange = IDBKeyRange.lowerBound(0);
+						var cursorRequest = store.openCursor(keyRange);
+
+						cursorRequest.onsuccess = function(e) {
+							alert("succesfull?");
+							var result = e.target.result;
+							if(!!result == false)
+								return;
+
+							// TODO aanpassen verkeerde aanpak linked verkeerde manier lagen renderTodo(result.value);
+							result.continue(); // Intressant 
+						}
+					},
+
+					crudActions: function(myobjectsText) {
+						var trans = yourObjectStore.indexedDB.db.transaction(["myobject"], "readwrite");
+						var store = trans.objectStore("myobject");
+						var request = store.put({
+							"text": myobjectsText,
+							"timeStamp" : new Date().getTime()
+						});
+
+						request.onsuccess = function(e) {
+							alert('succes data hier gekomen?');
+						  // Re-render all the myobjects's
+
+							yourObjectStore.indexedDB.getAllObjects();
+						};
+
+						request.onerror = function(e) {
+							alert("ERROR = "+e);
+						  console.log(e.value);
+						};
+					}
+				}};		
+
+				yourObjectStore.indexedDB.open();
+				
+				// Add some data 
+				//   var todo = document.getElementById('todo');
+				//   yourObjectStore.indexedDB.addTodo(myobjects.value);
+				//   todo.value = '';
+				// }
+			}
+		</script>
+	</head>
+	<body onload="indexbdtest()">
+	</body>
+</html>

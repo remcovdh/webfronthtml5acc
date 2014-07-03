@@ -1,17 +1,24 @@
-
+// Part of the web front-end html5 acceleration course
+// Written by Remco
+// Minigame
+//
 // Gradient to replicate a clear bleu sky
 
 function clearSky() {
-  context.rect(0, 0, canvas.width, canvas.height);
+	var thewidth   = getGameWidth();
+	var theheight  = getGameHeight();
+	var theContext = getGameContext();
+	
+  theContext.rect(0, 0, thewidth, theheight);
 
   // add linear gradient
-  var grd = context.createLinearGradient(canvas.width / 2,  canvas.height, canvas.width / 2, 0);
+  var linearGradient = context.createLinearGradient(thewidth / 2,  theheight, thewidth / 2, 0);
 
   // light blue
-  grd.addColorStop(0, '#8ED6FF');   
+  linearGradient.addColorStop(0, '#8ED6FF');   
   // dark blue
-  grd.addColorStop(1, '#004CB3');
+  linearGradient.addColorStop(1, '#004CB3');
 
-  context.fillStyle = grd;
-  context.fill();
+  theContext.fillStyle = linearGradient;
+  theContext.fill();
 }
