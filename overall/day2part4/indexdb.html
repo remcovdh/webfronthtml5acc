@@ -3,92 +3,91 @@
 		<script type="text/javascript">
 			function indexbdtest() {
 				// initalize
+				var nameObjectStore = "myobject";
 				
 				var yourObjectStore = {indexedDB: {
 					// init db
 					db: null,
 
 					// open db
-					open: function() {
+					open: function(acallback) {
 						var version = 4;
 						
-						var request = indexedDB.open("myobjects", version);
+						var request = indexedDB.open(nameObjectStore, version);
 					
 						request.onsuccess = function(e) {
 							yourObjectStore.indexedDB.db = e.target.result;
-							yourObjectStore.indexedDB.getAllObjects();
-							yourObjectStore.indexedDB.crudActions('added something');
+							acallback();
 						};
 
 						request.onerror = function(error) {
-							alert('Wat fout gegaan'+error);
+							alert('Something went wrong while opening the indexdb database, error code:' + error);
 						}
 
 						request.onupgradeneeded = function(e) {
 							var db = e.target.result;
 
 							// A versionchange transaction is started automatically.
-							alert("onupgradeneeded");
+							console.log("The indexdb object will be upgraded");
 							e.target.transaction.onerror = yourObjectStore.indexedDB.onerror;
 
-							if (db.objectStoreNames.contains("myobject")) {
-								 db.deleteObjectStore("myobject");
+							if (db.objectStoreNames.contains(nameObjectStore)) {
+								console.log("There current object will be deleted due to the upgrade");
+								db.deleteObjectStore(nameObjectStore);
 							}
 
-							var store = db.createObjectStore("myobject",
-								{keyPath: "timeStamp"});
+							var store = db.createObjectStore(nameObjectStore, {keyPath: "timeStamp"});
 						};
 					},
 					
 					getAllObjects: function() {
 						alert("get all objects please");
-						var trans = yourObjectStore.indexedDB.db.transaction(["myobject"], "readwrite");
-						var store = trans.objectStore("myobject");
+						var trans = yourObjectStore.indexedDB.db.transaction([nameObjectStore], "readwrite");
+						var store = trans.objectStore(nameObjectStore);
 
 						// Get everything in the store;
 						var keyRange = IDBKeyRange.lowerBound(0);
 						var cursorRequest = store.openCursor(keyRange);
 
 						cursorRequest.onsuccess = function(e) {
-							alert("succesfull?");
 							var result = e.target.result;
-							if(!!result == false)
+							if(!!result == false) 
 								return;
 
-							// TODO aanpassen verkeerde aanpak linked verkeerde manier lagen renderTodo(result.value);
-							result.continue(); // Intressant 
+							// Excercise change this into a call to a callback function in which function you put information
+							// into a list (you could also add a callback to clean the list first after the onsucces)
+							console.log(result.value);
+							result.continue();
 						}
 					},
 
-					crudActions: function(myobjectsText) {
-						var trans = yourObjectStore.indexedDB.db.transaction(["myobject"], "readwrite");
-						var store = trans.objectStore("myobject");
+					add: function(myobjectsText, acallback) {
+						var trans = yourObjectStore.indexedDB.db.transaction([nameObjectStore], "readwrite");
+						var store = trans.objectStore(nameObjectStore);
 						var request = store.put({
 							"text": myobjectsText,
 							"timeStamp" : new Date().getTime()
 						});
 
-						request.onsuccess = function(e) {
-							alert('succes data hier gekomen?');
-						  // Re-render all the myobjects's
-
-							yourObjectStore.indexedDB.getAllObjects();
+						request.onsuccess = function() {
+							acallback();
 						};
 
-						request.onerror = function(e) {
-							alert("ERROR = "+e);
-						  console.log(e.value);
+						request.onerror = function(error) {
+							alert('Something went wrong while putting something in the indexdb database, error code:' + error);
 						};
 					}
 				}};		
 
-				yourObjectStore.indexedDB.open();
-				
-				// Add some data 
-				//   var todo = document.getElementById('todo');
-				//   yourObjectStore.indexedDB.addTodo(myobjects.value);
-				//   todo.value = '';
-				// }
+				// Main line of code 
+				afterOpen = function() {
+					yourObjectStore.indexedDB.add('Here we add some data (again)' , afterTransaction);
+				}
+				afterTransaction = function() {
+					yourObjectStore.indexedDB.getAllObjects();
+				}
+				yourObjectStore.indexedDB.open(afterOpen);
+
 			}
 		</script>
 	</head>

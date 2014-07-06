@@ -24,25 +24,56 @@
 			<a href="day2part0.html">Start day 2</a>
 			<a href="day2part1.html">[2.1]</a>
 			<a href="day2part2.html">[2.2]</a>
-			<a href="day2part3.html">[2.3]</a><a href="day2part4.html">[2.4]</a><a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
+			<a href="day2part3.html">[2.3]</a>
+			<a href="day2part4.html">[2.4]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
 		</p>
-		<h2>Communication between client and server (day 2, part 3)</h2>
+		<h2>Communication between client and server, currently most used (day 2, part 3)</h2>
 		
 		<h3>In the beginning</h3>
 		<p>
-			Classicaly all communication on the web was page based. Although these pages were using different files, a file for structure, files with images, a file with style and sometimes a separate files with client side dynamics (javascript). In the browser every server request resulted in a full page re-render. This resulted in long waiting times and a blocking / freezing screens when pages became bigger. Some of it could be well handled by the chaching. 
+			Classicaly all communication on the web was page based. Although these pages were using different files, a file for structure, files with images, a file with style and sometimes a separate files with client side dynamics (javascript). In the browser every server request resulted in a full page re-render. This resulted in long waiting times and a blocking / freezing screens when pages became bigger. Some of these waiting times/ freeze times could be handled well by the chaching. 
+		</p>
+	<div class='excercise'>
+		<br/>
+		<b>Excercise:</b><br />
+		<ol>
+			<li>Draw interaction pattern you expect for a simple non secure webpage which includes a image, javascript and css file. Use at least the following components: server, browser, DNS</li>
+			<li>Add security to the big. Lets add that as the authentication component</li>
+		</ol>
+		<br />
+	</div>
+			
 		<h3>Caching</h3>
-		<b>TODO CACHING</b>. Cache-Control HTTP Headers HTTP 1.1 
-		<a href="https://developers.google.com/speed/docs/best-practices/caching">
-		https://developers.google.com/speed/docs/best-practices/caching</a>
+		<p>
+		One of the classical optimazation technics is caching. Due to the static nature of most earlier internet web pages this worked perfectly. As with most optimizations there are some costs involved / trade offs involved. Firstly where do you cache. It can be done on the browser, server and every step in between. This leads to a trade-off between being as fast as possible as close to the usage as possible (browser caching) being close to the sources which can lead to more cache hits (actually using the cache as the information source). Other trade offs are about which information to store in the cache, the amout of (extra) space that is used for storing cached information, the keys for looking up the information, the retention time of the information stored in cache etc etc.
+		</p>
+		<p>
+		Focussing on the Cache-Control HTTP Headers specified for HTTP 1.1. See <a href="https://developers.google.com/speed/docs/best-practices/caching">
+		https://developers.google.com/speed/docs/best-practices/caching</a> a set of current best practices are described. The main statement is that: 
 		It is important to specify one of Expires or Cache-Control max-age, and one of Last-Modified or ETag, for all cacheable resources. It is redundant to specify both Expires and Cache-Control: max-age, or to specify both Last-Modified and ETag. 
 		An example
 		But Due to the dynamic nature of web 2.0 websites, it is difficult to use static web caching. The reason for this is that dynamic websites -per definition- have personalized content for different users and/or regions.
-		<h2>Ajax</h2>
-		It was later also partly solved by using Ajax. Ajax made refreshing a part of the screen possible. In the beginning most of the ajax requested content were views. Nowadays there is also a strong movement towards a data interface instead of a views interface between browser and server. In this way you could already build a single page web application (SPA). In a SPA you do not request new pages. All the information needed to build further information can be either build from the first full page request or being requested by ajax calls. This model can be made two work but as you possibly quickly find that you soon want more. In this model all the information and updates needs to be requested by the browser. Nothing can be stored over two different sessions in de browser. But like always the best solution depends on a set of different parameters: the use-case of the solution, the budget, the experience off the development and maintenaince team, time-to-market etc.
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		<ol>
+			<li>Use node-static to test a few of the examples (for node static see <a href="https://github.com/cloudhead/node-static">https://github.com/cloudhead/node-static</a> and install accoording to instructions)</li>
+			<li>View Header information in your browser</li>
+			<li>Change the settings to make it use browser cache</li>
+			<li>Compare the solution with the one in the day2part3/browsercache dir test it and work out why the image retrieval is postphoned</li>
+		</ol>
+		<br />
+	</div>
+	<p>
+		As said before this is certainly not the only way to cache. Generally on so called server side there are several ways you can cache, because in general more steps are involved where caching can take place: database, webserver, application server, routers, firewall, proxy servers etc.
+	</p>
+	<h2>Ajax</h2>
+	It was later also partly solved by using Ajax. Ajax made refreshing a part of the screen possible. In the beginning most of the ajax requested content were views. Nowadays there is also a strong movement towards a data interface instead of a views interface between browser and server. In this way you could already build a single page web application (SPA). In a SPA you do not request new pages. All the information needed to build further information can be either build from the first full page request or being requested by ajax calls. This model can be made two work but as you possibly quickly find that you soon want more. In this model all the information and updates needs to be requested by the browser. Nothing can be stored over two different sessions in de browser. But like always the best solution depends on a set of different parameters: the use-case of the solution, the budget, the experience off the development and maintenaince team, time-to-market etc.
 	</p>
 	<p>
-		But lets make a minimal set up to work. A canonical example (the hello world of javascript frameworks) can be found at <a href="toodo">todo</a>What if we need to build this with only ajax and a minimal set of rest based interfaces.
+		But lets make a minimal set up to work. A canonical example (the hello world of javascript frameworks) can be found at <a href="day2part3/ajaxexample/index.html">day2part3/ajaxexample/index.html</a>. What if we need to build this with only ajax and a minimal set of rest based interfaces.
 	</p>
 	
 	<div class='excercise'>
@@ -51,10 +82,9 @@
 		<ol>
 			<li>Use an ajax based request in which a list is fetched and presented only after the button is pressed</li>
 			<li>Use an ajax based request in which a list is fetched before the button is pressed</li>
+			<li>Test the example code by opening index.html directly as file:// and after starting the server with http://</li>
 		</ol>
 		<br />
-		<br />
-		
 	</div>
 	<br />
 	<p class='excercise'>
@@ -62,20 +92,27 @@
 		<b>Sharing results</b><br/>
 		<br/>
 	</p>
-	<p>
 			
-	</p>
 	<h3>Compression</h3>
-	You can compress and sent compressed files over the line. This can be done in several ways. A few we will dive into deeper in later lessons. <b>TODO</b>http version to do this. 
-	<h3>Websockets</h3>
-	TODO https://github.com/sockjs/sockjs-client<br />
-	https://www.rabbitmq.com/blog/2011/09/13/sockjs-websocket-emulation/<br />
-	http://socket.io/blog/introducing-socket-io-1-0/?utm_source=javascriptweekly&utm_medium=email<br />
-	
-	<br />	<br />	<br />
-	TODO
-	http://code.tutsplus.com/tutorials/real-world-off-line-data-storage--net-34063
-	
-	requirebackbone vos presentatie voor een mooi cahce manifest voorbeeld
+	<p>
+	Another optimization can be to use compression. Especially static content (scripts, stylessheets, other statuc etc) can be easily compressed. Of course in compression there is a trade-off between compression and decompression time and difference in time between transferring a compressed or a non-compressed file. Compression can be done on several ways. Also keep in mind that compression on compression most likely does not lead to better performance. For example zipping a comressed jpg file most likely is slower as just sending the jpg file. Which compression is best to use all depends on the use-case. In the case of a low latency connection in combination to fast devices and high volume content compression can add big benefits. 
+	</p>
+
+	<div class='excercise'>
+		<br/>
+		<b>Excercise:</b><br />
+		<ol>
+			<li>Using a very simple index.html only static very big page to test optimization technics. 
+			See <a href="https://github.com/cloudhead/node-static#gzip">https://github.com/cloudhead/node-static#gzip</a></li>
+			<li>Measure the differences</li>
+		</ol>
+		<br />
+	</div>
+	<p class='excercise'>
+		<br/>
+		<b>Sharing results</b><br/>
+		<br/>
+	</p>
+	<b>TODO</b> Cross origin requests are only supported for HTTP. toeveogen bij Ajax als opdracht
   </body>
 </html>

@@ -24,9 +24,14 @@
 			<a href="day2part0.html">Start day 2</a>
 			<a href="day2part1.html">[2.1]</a>
 			<a href="day2part2.html">[2.2]</a>
-			<a href="day2part3.html">[2.3]</a><a href="day2part4.html">[2.4]</a><a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
+			<a href="day2part3.html">[2.3]</a>
+			<a href="day2part4.html">[2.4]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
 		</p>
 		<h2>Get sensory (day 2, part 2)</h2>
+		<h3>Introduction</h3>
+		Modern device get more and more sensors and interface you can or will be able to connect to. We will first look into the camera and microphone and later do some geoallocation. But there is already much more. Things like network information, battery information and device orientation. And is more sensory information to be expected.
 		<h3>The camera and the microphone</h3>
 		A long time the only way to get to the sensory interfaces would be using things like flash. In this course we will look at two solution. The first one is HTML media capture
 
@@ -38,7 +43,7 @@ HTML Media Capture was the DAP's first go at standardizing media capture on the 
 	<pre class="brush: xml;">
 		<input type="file" accept="audio/*;capture=microphone">	</body></pre>
 	<p>	
-	Altough this looks as a rather fine method. It has the disadvantage that it can only use the resulting file. There is no way to adjust the data directly.
+	Altough this looks as a rather fine method. It has the disadvantage that it can only use the resulting file. There is no way to adjust the data directly. Another even bigger disadvantage is the browser compliancy. It will only work in chrome, native android browser, opera and backberry but not in Firefox, IE and Safari.
 	</p>
 	<div class='excercise'>
 		<br/>
@@ -109,6 +114,13 @@ HTML Media Capture was the DAP's first go at standardizing media capture on the 
 	<p>	
 	A nice background article with much more details is: <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">http://www.html5rocks.com/en/tutorials/getusermedia/intro/</a>
 	</p>
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		Check the example, make it work for audio only and set make it echo a bit. At this URL you get a more complex but usable example how to add this <a href="https://webaudiodemos.appspot.com/input/index.html">https://webaudiodemos.appspot.com/input/index.html</a>.
+		<br />
+		<br />
+	</div>
 
 </html>
 

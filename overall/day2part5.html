@@ -26,13 +26,77 @@
 			<a href="day2part2.html">[2.2]</a>
 			<a href="day2part3.html">[2.3]</a>
 			<a href="day2part4.html">[2.4]</a>
-			<a href="day2part5.html">[2.5]</a><a href="day2part6.html">[2.6]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
 		</p>
-		<h2>Websockets</h2>
-		
-		<h2>WebRTC</h2>
-		
-		
-		http://iswebrtcreadyyet.com/</body>
+		<h2>Communication between client and server, new kids (day 2, part 5)</h2>
+
+		<h3>Application caching</h3>
+		On of the differences compared to previous client server application architectures is that in the client server model the client program contained the business logic / the application program. This client program was often installed on the client. In the web model applications the program are served from the server and we cannot be sure that it will be cached by setting cache attributes in the way with did before. Even in the case of more client logic the logic is served from server on request. This has the following disadvantages: you need a connection to start your application. Application cache manifest caching is an attempt to solve this problem. Two warning needs to be made: 
+		<ol>
+			<li>as always is working with cache more complex and special attention is needed in relation to versioning of your cached information</li>
+			<li>this technics works but has some subtile drawbacks you need to be aware of before using it in production. A more comprehensive solution is currently in it's early drafts: service workers.</li>
+		</ol>
+		<p>
+An cache manifest file is a plain text file. In the file the folowing should and or can be described:
+	</p>
+		<pre class="brush: javascript;">
+			CACHE MANIFEST
+			CACHE
+				/tobecachedfile.html 
+			NETWORK
+				/nevertobecachefiles.html
+			FALLBACK
+				/ifONLINEtakethisfile.html /ifNOTonlinetakethisfile.html
+		</pre>
+	<div class='excercise'>
+		<br/>
+		<b>Excercises:</b><br />
+		<ol>
+			<li>Test the <a href="day2part5/cachemanifest">day2part5/cachemanifest</a> example, by running the server and see the behaviour of calling the webpage after you shutdown the server. Check your console and network behaviour in your favourite browser</li>
+			<li>Adjust the example to make you of the FALLBACK option (for example for the manifest hope picture)</li>
+		</ol>
+		<br />
+	</div>
+		<h3>Websockets</h3>
+		<p>
+		This is one of the game changing new apis being part of the HTML5 stack. It is new interaction pattern. Currently most web pages including the ones working with ajax work on a request/ response interaction pattern. The client ask for url and the server sends the request information (content of the url) as response. Websockets are standardized socket connection. This are full duplex connection which mean that both: the client and the server can take initiative to send information. In this model the server can send information directly to the browser who need or can use the information. There are a number of (dis-)advantages of websockets.
+		</p>
+		<a href="http://www.apress.com/9781430247401">
+		<img align="right" src="images/defguidehtml5websocket.png"> 
+		</a>
+		<p>
+			Disadvantages:
+		</p>
+		<ol>
+			<li>It is a new communication pattern. New standards, convention and best-practices still need to be sorted out.</li>
+			<li>The secure version need to be used, because otherwise the changes are big that firwall routers etc</li>
+			<li>The session need to be maintained (ping like), and reconnection must be done automatically after disconnection</li>
+			<li>The connection is session based. Therefore needs session based staefull information on server side. Needs efficient handling of this session support which need special attention for site with a high number of users</li>
+			<li>Not supported for relatively old browser</li>
+		</ol>
+		<p>
+			Advantages:
+		</p>
+		<ol>
+			<li>Pushing information from server to clients is possible</li>
+			<li>Extremly small overhaed protocol, meaning far less bandwith needs</li>
+			<li>Streaming information (both ways) is easy</li>
+			<li>Works already in almost(!) every browser</li>
+			<li>Monitoring client side can be done at totally different level: browser is actice instead of only user is active</li>
+		</ol>
+	<div class='excercise'>
+		<br/>
+		<b>Excercise:</b><br />
+		<ol>
+			<li>Walk through the http://socket.io/get-started/chat/ example</li>
+			<li>Discuss potentials of this technic/api</li>
+		</ol>
+		<br />
+	</div>
+		<h3>WebRTC</h3>
+		http://iswebrtcreadyyet.com/
+		Anyone with Chrome or IE with ChromeFrame (which we prompt IE users to install) can use our WebRTC video technology.
+</body>
 </html>
 
