@@ -1,0 +1,30 @@
+<!doctype html>
+	<head>
+		<script src="app/main.js"></script>
+		<script src="app/imagetransparency.js"></script>
+		<script src="app/clip.js"></script>
+		<script src="app/resize.js"></script>
+		<script src="app/duplicator.js"></script>
+	</head>
+	<body style='background-color: #0099ff;'>
+		<h2>Starting a canvas / image processing test! </h2>
+		<div style="position : absolute; top : 60px; left : 0px;">Original</div>
+		<div style="position : absolute; top : 60px; left : 156px;">Gray -> Transparent</div>
+		<div style="position : absolute; top : 60px; left : 312px;">Clip copy</div>
+		<div style="position : absolute; top : 60px; left : 468px;">White -> Transparent</div>
+		<div style="position : absolute; top : 60px; left : 624px;">Resized</div>
+		<div style="position : absolute; top : 60px; left : 780px;">Duplicated</div>
+		<div style="position : absolute; top : 60px; left : 930px;">Resized 256</div>
+		<br />
+    <img id="canvasImg1" alt="Original" left="0px">
+    <img id="canvasImg2" alt="Original" left="156px">
+    <img id="canvasImg3" alt="Original" left="312px">
+    <img id="canvasImg4" alt="Original" left="468px">
+    <img id="canvasImg5" alt="Original" left="624px">
+    <img id="canvasImg6" alt="Original" left="780px">
+    <img id="canvasImg7" alt="Original" left="930px">
+		
+		<canvas id="canvas" style="position : absolute; top : 401px; left : 0px;"></canvas>
+		<script src="app/snow.js"></script>
+	</body>
+</html>

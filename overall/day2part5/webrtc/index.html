@@ -1,10 +1,30 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Web front-end html5 acceleration course (day 2)</title>
-		<link type="text/css" rel="stylesheet" href="video.css">
-		<script type="text/javascript" src="webrtc.js"></script>
-	</head>
-  <body>
-  </body>
+<head>
+<!-- script src="http://simplewebrtc.com/latest.js"></script> -->
+<script src="simplewebrtclatest.js"></script>
+</head>
+
+<body>
+Video local:<br />
+<div id="localVideo" muted></div>
+
+Video remote:<br />
+<div id="remoteVideo" muted></div>
 
 
+<script>
+var webrtc = new SimpleWebRTC({
+	localVideoEl: 'localVideo',
+	remoteVideosEl: 'remoteVideo',
+	autoRequestMedia: true
+});
+
+webrtc.on('readyToCall', function () {
+	webrtc.joinRoom('DevoteamWebAccTestRoom');
+});
+</script>
+
+</body>
+
+</html>
