@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 3)</title>
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a>
+			<a href="day2part4.html">[2.4]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
+			<a href="day2part7.html">[2.7]</a>
+			<a href="day3part0.html">Start day 3</a>
+			<a href="day3part1.html">[3.1]</a>
+			<a href="day3part2.html">[3.2]</a>
+			<a href="day3part3.html">[3.3]</a>
+			<a href="day3part4.html">[3.4]</a>
+			<a href="day3part5.html">[3.5]</a>
+			<a href="day3part6.html">[3.6]</a>
+		</p>
+		<h2>DOM</h2>
+		<p>
+			Document object model. The thing that represents our user-interface objects and structures the relation between those objects. For most pages the <i>window</i> is the top object in which a diversity of other objects are represented. On the toplevel there are direct dependent always available objects like: history, console and geolocation. But of course there are a possible wide variaty of other elements added to a page, like all form with elements and buttons, achors, list, table, divs and links. The structure is hierachical. All objects apart from top object have one parent object.
+		</p>
+		<img src="images/Htmldomtree.png">
+		<p>An example html DOM tree</p>
+		<p>
+			These objects can be defined in HTML directly or dynamically added to a page. These object can describe the looks and behaviour by setting there properties and/or attributes. 
+		</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ol>
+				<li>Display the main window objects, like history and geolocation in the console</li>
+				<li>
+					<ul>
+						<li>Make a very simple page hello world like page.</li>
+						<li>Add a button to the page that adds a DOM element dynamically.</li>
+						<li>Add a button to the page that changes the attributes of the previously added DOM element (see getAttribute).</li>
+						<li>Add a button to the page that changes the properties of the previously added DOM element (dot notation).</li>
+						<li>Describe a few differences between properties and attributes (an example see difference is maxlength and colspan)</li>
+					</ul>
+				</li>	
+			</ol>	
+			<br />
+		</div>
+		<br />
+		<p class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</p>
+		<p>
+		One thing to remember about the DOM: it is slow. Javascript has gained an enormous performance boost. But only lately there seems to be more and more attention on the speed of the DOM. Actually a reason why frameworks like React.js gain a huge performance gain. In React.js a copy of the DOM is used for most of the DOM oriented manipulation. This copy than only interfaces with the 'real' DOM reulting is (far) more efficient updates. Remember that working with the DOM can have serious drawback on performance. It is a good practice to do performance based test around (repetitive) DOM like manipulations.
+	</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ol>
+				<li>Make a small performance based test with a DOM manipulation (look back into the first lesson how to setup such a test)</li>
+				<li>Make a small performance based test with a property versus and attribute manipulation</li>
+			</ol>	
+			<br />
+		</div>
+		<br />
+		<p class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+

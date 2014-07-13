@@ -21,6 +21,7 @@
 						};
 
 						request.onerror = function(error) {
+							console.log(error);
 							alert('Something went wrong while opening the indexdb database, error code:' + error);
 						}
 

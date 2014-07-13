@@ -1,0 +1,262 @@
+<html>
+	<head>
+		<title>Web front-end html5 acceleration course (day 3)</title>
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+			SyntaxHighlighter.all();
+		</script>
+	</head>
+	<body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a>
+			<a href="day2part4.html">[2.4]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
+			<a href="day2part7.html">[2.7]</a>
+			<a href="day3part0.html">Start day 3</a>
+			<a href="day3part1.html">[3.1]</a>
+			<a href="day3part2.html">[3.2]</a>
+			<a href="day3part3.html">[3.3]</a>
+			<a href="day3part4.html">[3.4]</a>
+			<a href="day3part5.html">[3.5]</a>
+			<a href="day3part6.html">[3.6]</a>
+		</p>
+		<h2>It is about style (day 3, part 2)</h2>
+		<h3>Style</h3>
+		<p>
+			The following aspects of style will be handled in this course:
+		</p>
+		<ul>
+			 <li>style sheet</li>
+			 <li>layout</li>
+			 <li>typography</li>
+		</ul>
+		<h3>Style is a trend</h3>
+			<ul>
+				<li>Page based</li>
+				<li>Windows </li>
+				<li>Flat design</li>
+				<li>Metro (see <a href="http://www.youtube.com/watch?v=JLij19xbefI">http://www.youtube.com/watch?v=JLij19xbefI</a> for an metro based example in javascript but with a interesting opinion on offline usage)</li>
+				<li>Mobile iOs</li>
+				<li>Material design</li>
+				<li>Others</li>
+			</ul>
+		<p>
+		<h3>Browser style</h3>
+			<p>A widly know test is used to see the compliancy with different style related implementation is  	
+			http://en.wikipedia.org/wiki/Acid3
+			
+				
+		<h3>CSS in general</h3>
+		<p>
+			Cascading Style Sheets are a way to describe the style in a rules seperatly from your document (which is described by the DOM). This seperates the structure and style of the page. An advantage of this seperation is that a single style can be added to different pages/documents or even whole sites in a consistent, declarive way. For a nice variarty / show of power of style based differentation on the same content see <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a>. ALthough the page is not maintained it already shows the immense power of ccs and design of a page.
+		</p>
+		<p>
+			This cascading style sheets uses references to the DOM elements to adjust the style of one or more DOM elements. The style describing can use inheritance so that what style description can inherit part of a previous style description. The syntax of stylesheets are: 
+		</p>
+		<pre class="brush: javascript;">
+			&lt;style type="text/css"&gt;
+			/* comment */
+			selector(-s) {
+				property1: value1;
+				property2: value2;
+				property3: value3;
+			}
+			&lt;/style&gt;
+		</pre>
+		The selector identifies which element should be manipulated. These elements are all box based (rectangular). The part between the curly brackets are a declaration of the adjustments. There is a wide variety of possible selector and choicing these selectors wisely will greatly benifit the maintainability of a site. In the following code example different type of selectors are shown:
+		<pre class="brush: javascript;">
+			/* Descendant selectors adjust all childeren subelm contained by parent elm */
+			elm subelm {declaration}
+
+			/* Child selector: only adjust direct childeren subelm of parent elm */
+			elm > subelm {declaration}
+		
+			/* Adjacent sibling selector : only adjust subelm directly after the parent elm */
+			elm > subelm {declaration}
+		
+			/* General sibling selectors: css3 only, select all subelm after the parent elm */
+			elm ~ subelm {declaration}
+		
+			/* ID Selectors: directly selection on elm */
+			&lt;elm id="identifier1"&gt;
+			elm#identifier1 {declaration}
+		
+			/* Class selectors group elm in classes and set style by classes */
+			&lt;elm class="classname"&gt;
+			elm.classname {declaration}
+
+			/* Pseudo class selectors these are state based selectors example state based selectors:
+			 :link :visited :focus :hover :active :first-line :first-letter */
+			elm:statebasedselector {declaration}
+		</pre>
+		<p>
+			For more details on the pseudo selector see <a href="http://www.smashingmagazine.com/2011/07/13/learning-to-use-the-before-and-after-pseudo-elements-in-css/">http://www.smashingmagazine.com/2011/07/13/learning-to-use-the-before-and-after-pseudo-elements-in-css/</a>. 
+		</p>
+		<a href="http://shop.oreilly.com/product/0636920023494.do"><img align="right" src="images/Learningwebdesign.jpg"> </a>
+		<p>
+		One of the earlier pattern in describing a style was by being as specific as possible. Although this was a best practice using class like selector in a less specific and better reusable way seems preferrable. A video with real world examples is shown in <a href="http://vimeo.com/70115794">http://vimeo.com/70115794</a>
+	</p>
+		<h3>Inherentance</h3>
+		<p>
+		The following rules apply to handle conflicts/ priority in stylesheet rules. In general a style is determined by what the author of a page defined as style, if not available the style a user has defined as there personal style and if that is not applicable the browser style is used (also called user agent style sheet). If a property is set more than ones in one of these ways the last setting will be used by the browser.
+	</p>
+	<p>
+		For properties it is important if a property inherits.
+	</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ol>
+				<li>Check out the elements tab of your developers browser control to see:</li>
+				<li>
+					<ol>
+						<li>Select a box from the display window</li>
+						<li>Select a box from DOM structure</li>
+						<li>Inspect the boxes atrributes</li>
+					</ol>	
+				</li>
+				<li>Make a small performance based test with a property versus and attribute manipulation</li>
+			</ol>	
+			<br />
+		</div>
+		<br />
+		<p class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</p>
+
+		<h3>CSS very short history</h3>
+		The early days of css1 was described in 1996 and mostly implemented by browsers around 2000. The current CCCS2 standard is adapted by almost all browsers. The status of the working draft for ccs3 is more diffuse and can be best checked at <a href="http://caniuse.com/">http://caniuse.com/</a>
+		
+		<h3>CSS3</h3>
+		<img align="right" src="images/Css3.jpeg">
+		<p>An not exhaustive list of the new features of CSS3 are:</p>
+		<ul>
+			<li>rounded borders</li>
+			<li>shadows (box and text)</li>
+			<li>gradients</li>
+			<li>backgrounds</li>
+			<li>transformations</li>
+			<li>transitions</li>
+			<li>animations</li>
+		</ul>
+		<p>
+		Although many of the modern browsers have implemented most of the CSS3 properties it must be said that the CSS3 specification is not finalized yet and older browser lack support for these properties. And to show an example of it's not exhaustiveness of the list see <a href="http://css-tricks.com/time-element/">http://css-tricks.com/time-element/</a>
+		</p>
+		
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			Use <a href="http://www.w3schools.com/css/css3_intro.asp"> http://www.w3schools.com/css/css3_intro.asp</a> to make:
+			<ol>
+				<li>A box with rounded corners</li>
+				<li>A gradient background</li>
+				<li>An animation</li>
+			</ol>	
+			<br />
+		</div>
+		<br />
+		<p class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</p>
+		<h3>Layout</h3>
+		<p>
+			You can in general differentiate between the following type of flexibility in layouts:
+		</p>
+		<ol>
+			<li>Fixed</li>
+			<li>Fluid / liquid</li>
+			<li>Elastic</li>
+			<li>Responsive grid</li>
+		</ol>
+		<p>
+			In a very general way you can say that the fixed format is more predicatable but doesn't scale with chnages if format. The more fluid versions have problems with sometimes a very long line length and a lot of calculation. The Elastic version can become to big and has extra costs to scale imgaes, pictures and videos. The last solution is currently very popular, with mostly used example is <a href="http://getbootstrap.com/">bootstrap</a> which is made by Twitter.
+		</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ol>
+				<li>Copy bootstrap</li>
+				<li>Make a mini website using bootstrap</li>
+				<li>Test it on your tablet or phone</li>
+				<li>Check the <a href="http://getbootstrap.com/css/#grid">http://getbootstrap.com/css/#grid</a></li>
+			</ol>	
+			<br />
+		</div>
+		<br />
+		<h3>Typography</h3>
+		<p>
+			For an introduction in @font-face css3 feature, see <a href="http://www.html5rocks.com/en/tutorials/webfonts/quick/">
+		http://www.html5rocks.com/en/tutorials/webfonts/quick/</a>.
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ol>
+				<li>Make simple text page</li>
+				<li>Use <a href="http://www.google.com/fonts">http://www.google.com/fonts</a> to display the page in a separate font</li>
+				<li>Use css3 principle to make the first letter of a paragraph twice as big</li>
+			</ol>	
+			<br />
+		</div>
+		</p>
+		<p>TODO https://hacks.mozilla.org/2009/10/font-control-for-designers/ check if this is introduced.
+		<h3>Pre processors</h3>
+		Stylesheets are very declaritve, but for larger projects they and up be very brittle and difficult to handle. This is partially
+		due to a set of old habits that were best practices but aren't any more. Another reason you can not program in your style sheets. This last reason is changed. Currently there are a number of pre-processor for stylesheets that realy can make a difference. These are currently well known preprocessors:
+		<ul>
+			<li><a href="http://lesscss.org/">Less</a></li>
+			<li><a href="http://sass-lang.com/">Sass</a></li>
+			<ul>
+				<li><a href="http://compass-style.org/">Compass</a></li>
+				<li><a href="http://bourbon.io/">Bourbon</a></li>
+				<li><a href="http://breakpoint-sass.com/">http://breakpoint-sass.com/</a>
+			</ul>
+		</ul>
+		<p>
+			Opinions about the differences between sass and less can for example be found <a href="http://css-tricks.com/sass-vs-less/">at</a>. Use-case: browser specific prefex and variables. For a good introduction in less, see <a href="http://designshack.net/articles/css/using-less-js-to-simplify-your-css3/">http://designshack.net/articles/css/using-less-js-to-simplify-your-css3/</a>. The jess tool also works in most on-line IDE which we described in the first lesson. 
+		</p>
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ol>
+				<li>Use client side less first</li>
+				<li>Use server side less</li>
+				<li>Let 's discuss the implementation of sass</li>
+			</ol>	
+			<br />
+		</div>
+		<br />
+		<p class='excercise'>
+			<br/>
+			<b>Sharing results</b><br/>
+			<br/>
+		</p>
+	</body>
+</html>
+
+
+
+
+
+
+
+
