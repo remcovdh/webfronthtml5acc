@@ -2,6 +2,14 @@
   <head>
     <title>Web front-end html5 acceleration course (day 3)</title>
 		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
 	</head>
   <body>
 		<p>
@@ -18,48 +26,83 @@
 			<a href="day2part3.html">[2.3]</a>
 			<a href="day2part4.html">[2.4]</a>
 			<a href="day2part5.html">[2.5]</a>
-			<a href="day2part6.html">[2.6]</a><a href="day2part7.html">[2.7]</a>
+			<a href="day2part6.html">[2.6]</a>
+			<a href="day2part7.html">[2.7]</a>
 			<a href="day3part0.html">Start day 3</a>
 			<a href="day3part1.html">[3.1]</a>
 			<a href="day3part2.html">[3.2]</a>
-			<a href="day3part3.html">[3.3]</a><a href="day3part4.html">[3.4]</a><a href="day3part5.html">[3.5]</a><a href="day3part6.html">[3.6]</a>
+			<a href="day3part3.html">[3.3]</a>
+			<a href="day3part4.html">[3.4]</a>
+			<a href="day3part5.html">[3.5]</a>
+			<a href="day3part6.html">[3.6]</a>
 		</p>
-		<h2>..... (day 3, part 1)</h2>
-		JQuery less usage due to selectors.
+		<h2>Responsive webdesign (day 3, part 3)</h2>
+		<h3>Short history</h3>
+		Ethan Marcotte first wrote about responsive web design (<a href="http://alistapart.com/article/responsive-web-design">http://alistapart.com/article/responsive-web-design</a>) in A List Apart in 2010.
+		
+		<h3>Viewport</h3>
+		The viewport meta tag tells the browser how to behave when it renders the webpage, you can tell it how big the viewport will be
+		
+		The best thing to do for responsive design is to set the width of the viewport to be the same as whatever device is being used.
+		<pre class="brush: javascript;">
+			&lt;meta name="viewport" content="width=device-width"&gt;</pre>
+		
+		Other options that can be set are:
+		<ul>
+			<li>initial-scale</li>
+			<li>maximum-scale</li>
+			<li>user-scallable=no/yes</li>
+			<li>width=500</li>
+		</ul>
+		A short introduction can be found at <a href="http://www.paulund.co.uk/understanding-the-viewport-meta-tag">http://www.paulund.co.uk/understanding-the-viewport-meta-tag</a>
+		
+		<div class='excercise'>
+			<br/>
+			<b>Excercises:</b><br />
+			<ul>
+				<li>Set the viewport to a maxwidth of 320 and see what happens in the browser</li>
+				<li>Set user scallabillity on a device which can zoom/pinch and see that you can control these charachteristics</li>
+			</ll>	
+			<br />
+		</div>
+		A little slow but very thorough video can be found at <a href="http://www.youtube.com/watch?v=QySGUt0UI5c">http://www.youtube.com/watch?v=QySGUt0UI5c</a>. This presentation is of the same author as the <a href="http://www.packtpub.com/html5-and-css3-responsive-web-design-cookbook/book">HTML5 and CSS3 Responsive Webdesign Cookbook</a>
+		
+
+		<img src="images/LearingResponsiveWebDesign.jpg" align="right">
+
+		<a href="http://www.packtpub.com/html5-and-css3-responsive-web-design-cookbook/book"><img src="images/HTML5andCSS3ResponsiveWebdesignCookbook.jpg" align="right"></a>
 		
 		
-		<h3>Mobile first</h3>
-		Takeway from https://www.google.com/events/io/io14videos/95a7ccd2-38bf-e311-b297-00155d5066d7
-		See also <a href="bit.ly/mobilewebprinciples">bit.ly/mobilewebprinciples</a>
-		Home page and navigation:
-		Keep call to action front and center
-		Logo is home
-		Menu short and sweet no scrolling should be necessary
-
-		Search should be visible
-		Smart search (completing, spelling correction result, context aware search (not just google))
-		Never zero in the result list (should be clear while searching)
-		Select instead of navigate (in case this can be done in view select questions)
-
-		Let user 
-		Purchase as guest
-		Don't ask personal information up front
-		Picking up where left off (consistent url policy)
-
-		Design efficient form (it is already painfull enough)
-		Auto filling form
-		Use pre existing 
-		Minimize tabs and handling
-		Real-time validation
-
-		Side wide considerations
-		Don't make users pinch and zoom
-		Provide expandable / tabble images
-		Be clear in why you need your users location
-		Keep browser in your single browser window
-		Don't let promotions steal the show
-		Optimize your entire site for mobile
+		<h3>Media query</h3>
+		Since CSS 2.1 style sheets have some measure of device awareness through media types. Most commonly used are print and screen.
 		
+		<pre class="brush: javascript;">
+			&lt;link rel="stylesheet" type="text/css" href="core.css" media="screen" /&gt;
+			&lt;link rel="stylesheet" type="text/css" href="print.css" media="print" /&gt;
+		</pre>
+		
+		<p>The W3C created media queries as part of the CSS3 specification, improving upon the promise of media types. A media query allows us to target not only certain device classes, but to actually inspect the physical characteristics of the device rendering our work.
+		</p>
+		
+		<pre class="brush: javascript;">
+			@media print {
+				body { font-size: 10pt }
+			}
+			@media screen {
+				body { font-size: 13px }
+			}
+			@media screen, print {
+				body { line-height: 1.2 }
+			}</pre>
+			
+		
+		<h3>Setting breakpoints</h3>
+		<pre class="brush: javascript;">
+			@media screen and ( max-width: 1024px ) {...}
+			@media screen and ( min-width: 1025px ) {...}
+		</pre>
+
+		http://i-skool.co.uk/mobile-development/web-design-for-mobiles-and-tablets-viewport-sizes/
 	</body>
 </html>
 
