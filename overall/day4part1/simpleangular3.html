@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script type="text/javascript" src="angular.js"></script>
+</head>
+<body>
+	<div class="container" ng-controller="aController">
+		<ul>
+			<li ng-repeat="framework in frameworks"> 
+				<a href="{{framework.homepage}}">{{framework.name}}</a>
+			</li>
+		</ul>
+	</div>
+		<script>
+			// function timedChange(ascope) {
+			// 	ascope.frameworks = ascope.frameworks + {name: 'durandal', homepage: 'http://durandaljs.com/'}
+			// 	console.log(ascope.frameworks);
+			// }
+			
+			function aController($scope) {
+				console.log("scope"+$scope);
+				// setInterval(function() {
+				// 	 timedChange($scope);
+				//  }, 1000);
+				
+				$scope.frameworks = [
+					{name: 'angular', homepage: 'https://angularjs.org'},
+					{name: 'backbone', homepage: 'http://backbonejs.org/'},
+					{name: 'ember', homepage: 'http://emberjs.com/'},
+					{name: 'knockout', homepage: 'http://knockoutjs.com/'},
+					{name: 'durandal', homepage: 'http://durandaljs.com/'}
+				]
+			}
+		</script>
+</body>
+</html>

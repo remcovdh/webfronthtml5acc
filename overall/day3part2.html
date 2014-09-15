@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Web front-end html5 acceleration course (day 3)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/css" rel="stylesheet" href="styles/style.css">
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
@@ -77,6 +78,7 @@
 			
 				
 		<h3>CSS in general</h3>
+		<p>TODO Add a link to http://learnlayout.com/ and text to rework on the old skills</p>
 		<p>
 			Cascading Style Sheets are a way to describe the style in a rules seperatly from your document (which is described by the DOM). This seperates the structure and style of the page. An advantage of this seperation is that a single style can be added to different pages/documents or even whole sites in a consistent, declarive way. For a nice variarty / show of power of style based differentation on the same content see <a href="http://www.csszengarden.com/">http://www.csszengarden.com/</a>. ALthough the page is not maintained it already shows the immense power of ccs and design of a page.
 		</p>
@@ -205,6 +207,9 @@
 			<li>Responsive grid (see for e.g. <a href="http://getbootstrap.com/">bootstrap</a>)</li>
 		</ol>
 		<p>
+			<b>TODO</b> The transition from table-based layouts to CSS-based ones
+		</p>
+		<p>
 			In a very general way you can say that the fixed format is more predicatable but doesn't scale with chnages if format. The more fluid versions have problems with sometimes a very long line length and a lot of calculation. The Elastic version can become to big and has extra costs to scale imgaes, pictures and videos. The last solution is currently very popular, with mostly used example is <a href="http://getbootstrap.com/">bootstrap</a> which is made by Twitter.
 		</p>
 		<div class='excercise'>
@@ -223,6 +228,18 @@
 		<p>
 			For an introduction in @font-face css3 feature, see <a href="http://www.html5rocks.com/en/tutorials/webfonts/quick/">
 		http://www.html5rocks.com/en/tutorials/webfonts/quick/</a>.
+		
+		<b>TODO</b> retranslate next paragraph
+		The Vegur font isn't in Raphaël, nor is any font for that matter. And besides, most fonts use TrueType(TTF) or OpenType(OTF) format. To get from those formats into something that is usable by Raphaël, we need to convert them using a tool called Cufón. Cufón allows you export the different font styles of a given font (regular, bold, italic, bold italic, etc) for use with Raphaël. It is outside the scope of this tutorial to cover Cufón in detail. Check the aforemention link for more details. A great source of unemcumbered fonts for your applications is the Google Font Directory. (taken from http://www.html5rocks.com/en/tutorials/raphael/intro/)
+		
+		And this 
+		SVG vs Canvas
+		Given that they are both methods to draw objects on the screen, it's often not immediately clear why you should use one over the other. The two mediums have vastly different approaches. Canvas is an immediate mode API is much like drawing with crayons. You can clear or destroy part of the drawing but you can't by default revert or alter a previous stroke. Canvas is also a raster bitmap so it is is very much subject to pixelation when images are scaled. SVG on the other hand, as previously mentioned can serve multiple resolutions with the same level of detail and can be scripted.
+		
+		<b>TODO</b>Also call http://www.createjs.com/#!/TweenJS/demos and possibly also easel.js (next to pixie.js kinetic and the whole article to compare them)
+		Overview of good canvas technics (little bit game oriented) https://www.youtube.com/watch?v=NG5uDXCOr8s 
+		
+		
 		<div class='excercise'>
 			<br/>
 			<b>Excercises:</b><br />

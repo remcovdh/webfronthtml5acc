@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 4)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a>
+			<a href="day2part4.html">[2.4]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
+			<a href="day2part7.html">[2.7]</a>
+			<a href="day3part0.html">Start day 3</a>
+			<a href="day3part1.html">[3.1]</a>
+			<a href="day3part2.html">[3.2]</a>
+			<a href="day3part3.html">[3.3]</a>
+			<a href="day3part4.html">[3.4]</a>
+			<a href="day3part5.html">[3.5]</a>
+			<a href="day3part6.html">[3.6]</a>
+			<a href="day4part0.html">Start day 4</a>
+			<a href="day4part1.html">[4.1]</a>
+			<a href="day4part2.html">[4.2]</a>
+			<a href="day4part3.html">[4.3]</a>
+			<a href="day4part4.html">[4.4]</a>
+			<a href="day4part5.html">[4.5]</a>
+			<a href="day4part6.html">[4.6]</a>
+		</p>
+		<h2>The frameworks and architecture (day 4, part 3)</h2>
+		<h3>Modern javascript frameworks</h3>
+		<h4>Backbone</h4>
+		<p>
+			Backbone.js is a lightweight MVC framework. Born in 2010, it quickly grew popular as a lean alternative to heavy, full-featured MVC frameworks such as ExtJS. This resulted in many services adopting it, including Pinterest, Flixster, AirBNB and others. Provides REST-persistable models with simple routing and callbacks so you know when to render views (you supply your own view-rendering mechanism).
+	</p>
+	<p>
+			As being a rather lean soltuion a lot of extensions are made to get into a more fully fletched framework. Marionette being one of the most well known ones. 
+	</p>
+		
+		<h4>Knockout</h4>
+			<p>
+				Aims to simplify JavaScript UIs by applying the Model-View-View Model (MVVM) pattern. Tightly focused on rich UIs: DOM-based templates with declarative bindings, and observable models with automatic dependency detection. Clearly resonating in the  Microsoft community. A comparison is made over <a href="http://lostechies.com/derickbailey/2011/11/22/backbone-vs-knockout/"> here</a>
+			</p>
+		
+		<h4>Angular</h4>
+		AngularJS was born in 2009 as a part of a larger commercial product, called GetAngular. Shortly after, Misko Hevery, one of the engineers who founded GetAngular, managed to recreate a web application that consisted of 17 thousand lines of code and took 6 months to develop in a mere 3 weeks using just GetAngular. Reducing the size of the application to just about 1,000 lines of code convinced Google to start sponsoring the project, turning it into the open-source AngularJS we know today. Amongst Angular’s unique and innovative features are two-way data bindings, dependency injection, easy-to-test code and extending the HTML dialect by using directives.
+
+		<h4>Ember</h4>
+		Ember’s roots go way back to 2007. Starting its life as the SproutCore MVC framework, originally developed by SproutIt and later by Apple, it was forked in 2011 by Yehuda Katz, a core contributor to the popular jQuery and Ruby on Rails projects. Notable Ember users include Yahoo!, Groupon, and ZenDesk.
+
+
+		Read more at http://www.airpair.com/js/javascript-framework-comparison#jj4wjuoh0xLorMDZ.99
+		<h4>Durandal</h4>
+		To see an overview of some of the capabilities and differences between Durandal and Angular look into how the ideas of these two frameworks are converging into one. See <a href="http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/"> announcement</a>
+		
+		<h4>React</h4>
+		React is a library for building composable user interfaces. It encourages the creation of reusable UI components which present data that changes over time. A good explanation if the key reasons how React differs from other frameworks like angular can be found http://facebook.github.io/react/blog/2013/06/05/why-react.html.
+
+		<h3>Futural frameworks</h3>
+		Two very interesting frameworks:
+		<ol>
+			<li>
+				<a href="https://www.meteor.com/">Meteor</a> Which is an so called isometric framework. For a more futher explantion <a href="http://venturebeat.com/2013/11/08/the-future-of-web-apps-is-ready-isomorphic-javascript/">see.</a>
+			</li>
+			<li>
+				<a href="http://webcomponents.org/">Webcomponents</a> and googles implementation of webcomponents called 
+				<a href="http://www.polymer-project.org/">polymer</a>
+			</li>
+		</ol>
+		
+		<h3>Comparisions</h3>
+		Some nice comparisions of the different currently most used frameworks can be found, at <a href="http://www.infoq.com/articles/real-world-javascript-mvc-frameworks">infoq article on javascript frameworks</a>. A more comprehensive comparison can be found <a href=" http://blog.stevensanderson.com/2012/08/01/rich-javascript-applications-the-seven-frameworks-throne-of-js-2012/">here</a>
+		
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

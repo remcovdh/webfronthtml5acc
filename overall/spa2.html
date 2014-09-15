@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>Javascript Web Front-end HTML5 Acceleration Course</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<script type="text/javascript">
+			
+			function addSVGObject(aElem, aAttrList) {
+				areturn = createSVGObject(aElem, aAttrList)
+				document.getElementById("mySVG").appendChild(areturn);
+				return areturn;
+			}
+			
+			function addTextObject(aText, aAttrList) {
+				var textNode = document.createTextNode(aText);
+				var newText  = createSVGObject("text", aAttrList);
+				console.log("newText"+newText);
+				newText.appendChild(textNode);
+				document.getElementById("mySVG").appendChild(newText);
+				
+				// temporary 
+				return textNode
+			}
+
+			function createSVGObject(aElem, aAttrList) {
+				var svgNS = "http://www.w3.org/2000/svg";
+
+				var theElem = document.createElementNS(svgNS,aElem); //to create a circle, for rectangle use rectangle
+				
+				for (var aAttr in aAttrList) {
+					console.log('aAttr='+aAttr+' aAttrList[aAttr]'+aAttrList[aAttr]);
+					if (aAttr === "xlink:href") { // Do not quite understand way this should be namespaced and others not!
+																				// see also http://forums.mozillazine.org/viewtopic.php?f=25&t=608396
+						console.log('namespaced');
+						theElem.setAttributeNS(svgNS,aAttr,aAttrList[aAttr]);
+					} else {
+						theElem.setAttributeNS(null,aAttr,aAttrList[aAttr]);
+						// Does have same effect theElem.setAttribute(aAttr,aAttrList[aAttr]);
+					}
+				}
+				console.log("theElem"+theElem);
+				return theElem;
+			}
+			
+			function createScene() {
+				addSVGObject("circle", {"id":"mycircle", "cx":100, "cy":100, "r":50, "fill":"green"});
+				addSVGObject("path", {"id":"textcircle2", "d":"M 210 250 A 40 40 0 0 0 290 250", "style":"stroke: none; fill: none;"});
+				var aTextPath = addSVGObject("textPath", {"id":"textpath2", "xlink:href":"#textcircle2", "startOffset":"50%"});
+				console.log("aTextPath"+aTextPath);
+
+				var aSVGTextNode = addTextObject("Een tekstje", {x:300, y:30, 
+					"style": "font-family: sans-serif; font-size: 16; letter-spacing: 2pt; stroke: lightgreen; fill: lightgreen; text-anchor: middle;"
+				});
+				
+				// Temporary 
+				console.log("aSVGTextNode"+aSVGTextNode);
+				aSVGTextNode.appendChild(aTextPath);
+				document.getElementById("mySVG").appendChild(aSVGTextNode);
+			}
+			
+		</script>
+	</head>
+  <body onload="createScene()">
+		<svg id="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		</svg>
+	</body>
+</html>

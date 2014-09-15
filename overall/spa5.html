@@ -1,0 +1,155 @@
+<html>
+  <head>
+    <title>Javascript Web Front-end HTML5 Acceleration Course</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+
+		<script type="text/javascript">
+			var staticnamesvg = "mySVG";
+			var globalButtonCounter = 0;
+			var pathIdGenerator = 0;
+			var radiantIdGenerator = 0;
+			var radiants = [];
+			var stops = [];
+
+			var lelijkglobalobject;  // Mooi gevalletje voor closure
+		
+			function createSVGObject(aElem, aAttrList) {
+				var theElem = document.createElementNS("http://www.w3.org/2000/svg",aElem);
+				
+				for (var aAttr in aAttrList) {
+					if (aAttr === "xlink:href") { 
+						theElem.setAttributeNS("http://www.w3.org/1999/xlink", aAttr,aAttrList[aAttr]);
+					} else {
+						theElem.setAttribute(aAttr,aAttrList[aAttr]);
+					}
+				}
+				return theElem;
+			}
+
+			function addToSVG2(aNewSVGObject) {
+				var aSVGObject = createSVGObject(aNewSVGObject.element, aNewSVGObject.attributes);
+				document.getElementById(aNewSVGObject.parrentSvgId).appendChild(aSVGObject);
+				return aSVGObject;
+			}
+
+			function replaceSVG2(aNewSVGObject) {
+				var aSVGObject = createSVGObject(aNewSVGObject.element, aNewSVGObject.attributes);
+				
+				// THIS BENEATH NEEDS TO CHANGE TOWARDS replaceChild or something that checks if there is already
+				// something like it to change it to.
+				document.getElementById(aNewSVGObject.parrentSvgId).appendChild(aSVGObject);
+				return aSVGObject;
+			}
+
+			function mouseOverCircle(anobject) {
+				anobject.setAttribute("r", 53);
+			}
+			
+			// TODO mouseOutCircle is naming issue, because we do not only shrink
+			// setAttribute is kind of what we need but what is real1ly needed is 
+			// an animation with a little bit bouncing character
+			function mouseOutCircle(anobject) {
+				anobject.setAttribute("r", 50);
+				var objectid = anobject.getAttribute("id")
+				acx = parseInt(anobject.getAttribute("cx"),0);
+				
+				addToSVG2({	parrentSvgId: objectid, 
+														element: "animate",
+														attributes: {	"attributeName": "cx", "attributeType": "XML", "begin":"0s", "dur":"2s", 
+																					"from": ""+acx, "to": ""+(acx+30), "fill": "freeze"}});
+
+				objectid2 = lelijkglobalobject.getAttribute("id")
+				// astartOffset = lelijkglobalobject.getAttribute("startOffset")
+
+				addToSVG2({	parrentSvgId: objectid2, 
+														element: "animate",
+														attributes: {	"attributeName": "startOffset", "dur":"2s", 
+																					"from": 500, "to": 10, "repeatCount":"indefinite"}});
+			}
+
+			function createButton(aTextValue, xpos, ypos, colorButton, colorText) {
+				globalButtonCounter = globalButtonCounter + 1;
+				radiantIdGenerator = radiantIdGenerator + 1;
+				pathIdGenerator = pathIdGenerator + 1;
+
+				var aCircleNode = addToSVG2(
+					{	parrentSvgId: staticnamesvg, 
+						element: "circle",
+						attributes: {	"id": "circleid"+globalButtonCounter, "cx":xpos, "cy":ypos, 
+													"r":50, "fill": "url(#four_stops"+globalButtonCounter+")", "filter":"url(#dropShadow)",
+													"onmouseover":"mouseOverCircle(this)", "onmouseout":"mouseOutCircle(this)" }})
+
+				radiants[radiantIdGenerator] = addToSVG2({	parrentSvgId: staticnamesvg, 
+														element: "radialGradient",
+														attributes: {"id": "four_stops"+globalButtonCounter}});
+				
+				stops[globalButtonCounter] = [];
+				stops[globalButtonCounter][1] = "#" + colorButton.substring(0,3); 
+				stops[globalButtonCounter][2] = "#" + colorButton.substring(3,6); 
+				stops[globalButtonCounter][3] = "#" + colorButton.substring(6,9);
+				stops[globalButtonCounter][4] = "#" + colorButton.substring(9,12);
+				
+				addToSVG2({	parrentSvgId: "four_stops"+globalButtonCounter,
+										element: "stop",
+										attributes: {"offset": "0%", "style": "stop-color: "+ stops[globalButtonCounter][1] +";"} });
+
+				addToSVG2({	parrentSvgId: "four_stops"+globalButtonCounter,
+										element: "stop",
+										attributes: {"offset": "40%", "style": "stop-color: "+ stops[globalButtonCounter][2] +";"} });
+
+
+				addToSVG2({	parrentSvgId: "four_stops"+globalButtonCounter,
+										element: "stop",
+										attributes: {"offset": "80%", "style": "stop-color: "+ stops[globalButtonCounter][3] +";"} });
+
+				addToSVG2({	parrentSvgId: "four_stops"+globalButtonCounter,
+										element: "stop",
+										attributes: {"offset": "100%", "style": "stop-color: "+ stops[globalButtonCounter][4] +";"} });
+
+				addToSVG2({	parrentSvgId: staticnamesvg,
+										element: "path",
+										attributes: {	"id": "pathlink"+pathIdGenerator,
+																	"d":"M "+ (xpos-40) +" " + ypos + " A 40 40 0 0 0 "+
+																	(xpos + 40) + " " + ypos, "style":"stroke: none; fill: none;"} });
+
+				var aTextNode = addToSVG2({	parrentSvgId: staticnamesvg,
+														element: "text",
+														attributes: {"id": "textNode"+pathIdGenerator, "style": "font-family: sans-serif; font-size: 16;" +
+																									" letter-spacing: 2pt; stroke: none;"+
+																									"fill: " + colorText + "; text-anchor: middle;" } });
+
+				var aTextPath = addToSVG2({	parrentSvgId: aTextNode.getAttribute("id"),
+														element: "textPath",
+														attributes: { "id":"textpath"+pathIdGenerator, "xlink:href": "#pathlink"+pathIdGenerator,
+					 																						"startOffset": 50} });
+
+				var textNode = document.createTextNode(aTextValue);
+				aTextPath.appendChild(textNode);
+				lelijkglobalobject = aTextPath;
+			}
+
+			function createScene() {
+				createButton("Menu", 100, 100, "00900F00000F", "lightgreen");
+				createButton("Mindmap", 100, 300, "909F0F000F0F", "lightgreen");
+				createButton("Quick start", 300, 100, "900F00000F00", "lightblue");
+				createButton("Train", 200, 200, "0990FF0000FF", "lightblue");
+				createButton("Learn", 300, 300, "0900F00000F0", "lightblue");
+				createButton("Share", 400, 200, "990FF0000FF0", "lightblue");
+			}
+			
+		</script>
+	</head>
+  <body onload="createScene()">
+		<svg id="mySVG">
+			<filter id="dropShadow">
+				<feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+				<feOffset dx="2" dy="4" />
+				<feMerge>
+					<feMergeNode />
+					<feMergeNode in="SourceGraphic" />
+				</feMerge>
+			</filter>
+		</svg>
+	</body>
+</html>

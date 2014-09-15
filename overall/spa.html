@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Javascript Web Front-end HTML5 Acceleration Course</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<script type="text/javascript">
+				function test1() {
+					var a = document.getElementById('textpath2');
+					alert('yep1yep' + a.value);
+				}
+		</script>
+		<script type="text/javascript">
+				function test2() {
+					var a = document.getElementById("text2");
+					alert('yep2yep' + a);
+					
+					var obj = document.getElementById("textpath1");
+					var newText = document.createTextNode('recpm');
+					var b = obj.childNodes[0];
+					obj.replaceChild(newText, b);
+				}
+		</script>
+	</head>
+  <body onload="test1();">
+		<div id="title">
+			Javascript Web Front-end HTML5 Acceleration Course
+		</div>
+		<div id="search">
+			<form>
+				Search:<input type="text" name="searchtext">
+			</form>
+		</div>
+		<div id="directs">
+			<svg onload="test2(evt)">
+				<text x="320" y="150" style="letter-spacing: 5pt;">wide letter space</text>
+				<circle r="50" cx="50" cy="50" fill="green"/>
+				<path id="textcircle1"
+				   d="M 10 50 A 40 40 0 0 0 90 50" style="stroke: none; fill: none;"/>
+				</defs>
+				<text style="font-family: sans-serif; font-size: 16; letter-spacing: 2pt; stroke: lightgreen; fill: lightgreen; text-anchor: middle;">
+				   <textPath id="textpath1" xlink:href="#textcircle1" startOffset="50%">
+				   Text in circle
+				   </textPath>
+				</text>
+
+				<circle r="50" cx="250" cy="250" fill="blue"/>
+				<path id="textcircle2" d="M 210 250 A 40 40 0 0 0 290 250" style="stroke: none; fill: none;"/>
+				<text id="text2" style="font-family: sans-serif; font-size: 16; letter-spacing: 2pt; stroke: lightblue; fill: lightblue; text-anchor: middle;">
+				   <textPath id="textpath2" xlink:href="#textcircle2" startOffset="50%">
+				   Text in circle
+				   </textPath>
+				</text>
+				
+			</svg>
+		</div>
+			
+	</body>
+</html>

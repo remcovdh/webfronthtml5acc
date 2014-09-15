@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <title>Javascript Web Front-end HTML5 Acceleration Course</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<script type="text/javascript">
+			var pathIdGenerator = 0;
+			var circleIdGenerator = 0;
+			var lelijkglobalobject;
+		
+			function createSVGObject(aElem, aAttrList) {
+				var theElem = document.createElementNS("http://www.w3.org/2000/svg",aElem);
+				
+				for (var aAttr in aAttrList) {
+					if (aAttr === "xlink:href") { 
+						theElem.setAttributeNS("http://www.w3.org/1999/xlink", aAttr,aAttrList[aAttr]);
+					} else {
+						theElem.setAttribute(aAttr,aAttrList[aAttr]);
+					}
+				}
+				return theElem;
+			}
+			
+			function addToSVG(svgId, aElem, aAttrList) {
+				var aSVGObject = createSVGObject(aElem, aAttrList);
+				document.getElementById(svgId).appendChild(aSVGObject);
+				return aSVGObject;
+			}
+
+			function enlargeCircle(anobject) {
+				console.log("HIT"+anobject);
+				anobject.setAttribute("r", 100);
+			}
+			function shrinkCircle(anobject) {
+				console.log("HYT"+anobject);
+				anobject.setAttribute("r", 50);
+				lelijkglobalobject.setAttribute("startOffset", 20);
+				
+				var y1pos = anobject.getAttribute("cy");
+				addToSVG(anobject.getAttribute("id"), "animate", 
+								{"attributeName": "cy", "attributeType":"XML", "from":y1pos, "to":(y1pos-100), 
+								"begin":"1s", "dur":"5s", "fill":"freeze" });
+			}
+
+			function createButton(aTextValue, xpos, ypos, colorButton, colorText) {
+				circleIdGenerator = circleIdGenerator + 1;
+				var aCircleNode = addToSVG("mySVG", "circle", 
+						{"id": "circleid"+circleIdGenerator, "cx":xpos, "cy":ypos, 
+						 "r":50, "fill": "url(#three_stops)", "filter":"url(#dropShadow)", "onmouseover":"enlargeCircle(this)",
+					 "onmouseout":"shrinkCircle(this)" });
+
+				console.log("aCircleNode"+aCircleNode);
+				// console.log("aCircleNode"+aCircleNode);
+				// console.log("aCircleNode"+aCircleNode);
+				addToSVG("circleid"+circleIdGenerator, "animate", 
+								{"attributeName": "cx", "attributeType":"XML", "from":xpos, "to":(xpos-100), 
+								"begin":"0s", "dur":"5s", "fill":"freeze" });
+
+				pathIdGenerator = pathIdGenerator + 1;
+				addToSVG("mySVG", "path", {"id": "pathlink"+pathIdGenerator,"d":"M "+ (xpos-40) +" " + ypos + " A 40 40 0 0 0 "+
+									(xpos + 40) + " " + ypos, "style":"stroke: none; fill: none;"});
+
+				var aTextNode = addToSVG("mySVG", "text", 
+													// {"style": "font-family: sans-serif; font-size: 16; letter-spacing: 2pt; stroke: " + colorText + ";"+
+													{"style": "font-family: sans-serif; font-size: 16; letter-spacing: 2pt; stroke: none;"+
+													 "fill: " + colorText + "; text-anchor: middle;"
+				});
+
+				var aTextPath = createSVGObject("textPath", { "id":"textpath2", "xlink:href": "#pathlink"+pathIdGenerator,
+					 																						"startOffset":"50%"});
+				aTextNode.appendChild(aTextPath);
+				var textNode = document.createTextNode(aTextValue);
+				aTextPath.appendChild(textNode);
+				lelijkglobalobject = aTextPath;
+			}
+
+			function createScene() {
+				createButton("Een tekstje", 100, 100, "green", "lightgreen");
+				createButton("Een tekstje", 300, 200, "blue", "lightblue");
+			}
+		</script>
+	</head>
+  <body onload="createScene()">
+		<svg id="mySVG">
+			<filter id="dropShadow">
+				<feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+				<feOffset dx="2" dy="4" />
+				<feMerge>
+					<feMergeNode />
+					<feMergeNode in="SourceGraphic" />
+				</feMerge>
+			</filter>
+			<radialGradient id="three_stops">
+				<stop offset="0%" style="stop-color: #00D;"/>
+				<stop offset="40%" style="stop-color: #00F;"/>
+				<stop offset="80%" style="stop-color: #004;"/>
+				<stop offset="100%" style="stop-color: #00F;"/>
+			</radialGradient>
+
+			<rect x="10" y="10" width="200" height="20" stroke="black" fill="none">
+				<animate
+				attributeName="width"
+				attributeType="XML"
+				from="200" to="20"
+							begin="0s" dur="5s"
+							fill="freeze" />
+			</rect>
+
+		
+		</svg>
+		
+		
+	</body>
+</html>

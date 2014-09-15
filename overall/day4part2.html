@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 4)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="styles/style.css">
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
+		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
+		<script type="text/javascript" src="vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shCore.js"></script>
+		<script type="text/javascript" src="vendor/syntaxhighlighter/shBrushJScript.js"></script>
+		<script type="text/javascript">
+		    SyntaxHighlighter.all();
+		</script>
+	</head>
+  <body>
+		<p>
+			<a href="day0part0.html">Before start</a>
+			<a href="day1part0.html">Start day 1</a>
+			<a href="day1part1.html">[1.1]</a>
+			<a href="day1part2.html">[1.2]</a>
+			<a href="day1part3.html">[1.3]</a>
+			<a href="day1part4.html">[1.4]</a>
+			<a href="day1part5.html">[1.5]</a>
+			<a href="day2part0.html">Start day 2</a>
+			<a href="day2part1.html">[2.1]</a>
+			<a href="day2part2.html">[2.2]</a>
+			<a href="day2part3.html">[2.3]</a>
+			<a href="day2part4.html">[2.4]</a>
+			<a href="day2part5.html">[2.5]</a>
+			<a href="day2part6.html">[2.6]</a>
+			<a href="day2part7.html">[2.7]</a>
+			<a href="day3part0.html">Start day 3</a>
+			<a href="day3part1.html">[3.1]</a>
+			<a href="day3part2.html">[3.2]</a>
+			<a href="day3part3.html">[3.3]</a>
+			<a href="day3part4.html">[3.4]</a>
+			<a href="day3part5.html">[3.5]</a>
+			<a href="day3part6.html">[3.6]</a>
+			<a href="day4part0.html">Start day 4</a>
+			<a href="day4part1.html">[4.1]</a>
+			<a href="day4part2.html">[4.2]</a>
+			<a href="day4part3.html">[4.3]</a>
+			<a href="day4part4.html">[4.4]</a>
+			<a href="day4part5.html">[4.5]</a>
+			<a href="day4part6.html">[4.6]</a>
+		</p>
+		<h2>The frameworks and architecture (day 4, part 2)</h2>
+		<h3>MV*</h3>
+		<h4>Introduction</h4>
+		<p>
+			In this paragraph we focus on some capabilities that are supplied by most frameworks. In gives some inside in what is to be expected from such a framework. We are focusing on more technical differentiators between the different solution. But you could say that on the popularity level angular currently seems way ahead over it competition, although the rise and fall of framework seems only to increase over. Another main differentiator in a lot of open-source projects is normally the licensing, but most of these frameworks seems to MIT licensed.
+		</p>
+		<p>
+			And then there is the MV* topic. This relates back to numerous endless discussions of what type of MVC like pattern is better. As most of these discussion are at most interesting because it show some of the stronger and weaker points in general everybody seems to agree it is really necessary to differentiate between a Model and View logic of the application. In the original idea implemented in Smalltalk-76 (as will hopefully shown it is a for computing pattern old but still very much actual best practice / pattern). Over the years several different implementations of MVC are implemented. Mostly the role of the controller is implemented differently. Microsoft have implemented there MVVM (model view view model) as being one of the deviations from the original. And model view presenter (MVP) has a lot of followers (e.g. SWING in the java domain)
+		</p>
+		<h4>Binding / Two-way-binding</h4>
+			<p>
+			By binding something it means changing one variable it is directly reflected in the binded one. This is for example useful when you change something in your model and what this to be reflected in different views.
+		</p>
+			The two-way binding variant of this means that for example if a user changes some parameter in the view. This will also be changed in the model and because it is two way binding it will also be updated in all other views. The advantage is clear update and states within your client can be make consistent. Like always there is some price to pay for this.
+			
+			Beneath is the canonical example of how this works in Angular:
+			
+		<pre class="brush: javascript;">
+			<input ng-model="user.name" type="text" />
+			Hello {{user.name}}!</pre>
+		<p>
+		Try this in action: <a href="day4part1/simpleangular1.html">example</a>
+		(If time left way is it seeking a angular.min.js.map)
+	</p>
+
+		<h4>Templating</h4>
+			Templating is even shown in the previous example. For angular this is done in plane html. You can add variable in the scope to your page. Using other so called directives as beneath a very basic list can easily be build. Try this in action: <a href="day4part1/simpleangular3.html">example</a>
+			
+			
+		<pre class="brush: javascript;">
+			<ul>
+				<li ng-repeat="framework in frameworks"> 
+					<a href="{{framework.homepage}}">{{framework.name}}</a>
+				</li>
+			</ul>
+		</pre>
+
+			<li>Routes</li>
+			<p>
+				Another consequences of making single page applications is that there is no real URL to goto. This makes thing like history and back button working not intuitively without something extra. One way to solve this is by using routes. In this way user switch within a page as they would do with anchors in a page. It uses url's end to make this work again
+			</p>	
+			
+		<pre class="brush: javascript;">
+			phonecatApp.config(['$routeProvider',
+			  function($routeProvider) {
+			    $routeProvider.
+			      when('/phones', {
+			        templateUrl: 'partials/phone-list.html',
+			        controller: 'PhoneListCtrl'
+			      }).
+			      when('/phones/:phoneId', {
+			        templateUrl: 'partials/phone-detail.html',
+			        controller: 'PhoneDetailCtrl'
+			      }).
+			      otherwise({
+			        redirectTo: '/phones'
+			      });
+			  }]);</pre>
+
+			<h4>Widget versus SPA framework / library </h4>
+			Most of the javascript frameworks that we used to use where merely view extensions as they provide ways to make the view building easier. Widget libraries like Dojo, Ext.js and even JQuery all focused on making standardized view components easy to integrate and to make them work over the varity of browser. These widget libraries did not help you with more modern problem related to SPA's. The had no routing no module system, mostly only implemented a View of the MVC paradigma. As was to be expected new problems have let to new solutions as we will see. Another thing to note is that all these frameworks are relatively young have a high change rate and because our usage of the web is still continuously shifting it can be expected that more changes will take place in the foreseeable future. But one of the interesting things you can do in angular is making your own html tags in which you could put whole widget like functionality. This is actually what companies nowadays tend to do is making there own set of angular tags to be used as building block for there application, removing redundant and obfuscating html code and instead focusing on what that part of the SPA should do.
+
+			<h4>Framework OR library</h4>
+			As we will see in the next chapter when we discuss some of the current solution, we will make some difference between library and framework. In this respect that in a library you can just add it to an existing project and it helps as opposed to a framework which more dictates how you should structure and you application need to work like that framework. This can work in different way, for e.g. in a library fashion you most likely need to explicitly call one of there interfaces and integrate on their interfaces. These call need to be added. As opposed to using a framework whereby a lot of things normally are predefined in the way it should work. In that case your side needs to be adapted to the framework and most of the times adhere to their conventions.
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

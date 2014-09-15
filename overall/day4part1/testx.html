@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="inputdata.js">
+	
+		function BestellingenController($scope){
+			$scope.bestellingen = getBestellingen();
+
+			$scope.addFruit=function(){
+				$scope.fruits.push($scope.newFruit);
+			}
+		}  
+	
+	</script>
+</head>
+<body>
+<div ng-controller="BestellingenController">
+    Lijst van bestellingen:
+		
+    <ul><li ng-repeat="bestelregel in bestellingen">{{bestelregel}}</li></ul>
+    <hr />
+    Add more fruits :
+        <input type="text" ng-model="newFruit">
+        <button ng-click="addFruit()">Add</button>
+</div>
+</body>
+</html>

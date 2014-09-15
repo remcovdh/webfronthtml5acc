@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body ng-controller="aController">
+	<p>This is an example of two way binding</p>
+		Hello {{name}}!
+		<script>
+		function timedChange(avar) {
+			console.log("avar = "+ avar)
+			avar.name = "setByTimer";
+		}
+			
+		$scope.name = function aController() {
+			setInterval(function() {
+				 timedChange($scope);
+			 }, 1000);
+		}
+	</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Web front-end html5 acceleration course (day 3)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/css" rel="stylesheet" href="styles/style.css">
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shCore.css"></link>
 		<link type="text/css" rel="stylesheet" href="vendor/syntaxhighlighter/shThemeDefault.css"></link>
@@ -45,8 +46,14 @@
 		
 		The best thing to do for responsive design is to set the width of the viewport to be the same as whatever device is being used.
 		<pre class="brush: javascript;">
-			&lt;meta name="viewport" content="width=device-width"&gt;</pre>
-		
+			// css for IE
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			// HTML
+			&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</pre>
+		The logic behind why to use these viewports actually is a combination of browser compatibility, bugs and actually just testing what works in browsers (a lot of details of how and why see<a href="http://www.youtube.com/watch?v=8J6EdpXdzqc&feature=youtu.be">http://www.youtube.com/watch?v=8J6EdpXdzqc&feature=youtu.be</a>)
 		Other options that can be set are:
 		<ul>
 			<li>initial-scale</li>

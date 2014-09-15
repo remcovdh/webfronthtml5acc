@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Web front-end html5 acceleration course (day 2)</title>
+		<script type="text/javascript" src="raphael-min.js"></script>
+		<script>
+		var anim; // Animation aanpassen na aankomst
+		var swapper = true;
+		function test() {
+			var paper = Raphael(0,0,900,900);
+			var goodnews1 = paper.text(200, 20, "I like to make small programs in ").attr("font-size", 20);			
+			var goodnews2 = paper.text(165, 100, "RaphaelJS!").attr("font-size", 32);			
+			goodnews2.attr("transform", "R-45");
+			
+			
+			aswitch = true;
+			function nextTime() {
+				console.log("nextTime");
+				if (aswitch) {
+					// anim3 = Raphael.animation({transform: "R-15"}, 1000, "easeOut", nextTime);
+					anim3 = Raphael.animation({transform: "R-15"}, 1000, "easeOut");
+					aswitch = false;
+				} else {
+					// anim3 = Raphael.animation({transform: "R+15"}, 1000, "easeOut", nextTime);
+					anim3 = Raphael.animation({transform: "R+15"}, 1000, "easeOut");
+					aswitch = true;
+				}
+				goodnews2.animate(anim3);
+			};
+			
+			goodnews2.mouseover(nextTime);
+
+			// var d = "M 10,30 L 60,30 L 10,80 L 60,80"; 
+			var d = "M10 40L60 40L10 90L60 90z";
+			var mark = paper.path(d);
+			mark.attr({
+				"stroke": "#F00",
+				"stroke-width": 3
+			});
+			mark.attr("fill", "#00C");
+			
+			var d2 ="M10,105 C50,50 130,50 80,105" 
+			
+			var d2 = "M20,196 C22,180 32,180 34,196, M44,196 C46,180 56,180 58,196, M23,205 C32,220 47,220 56,205"
+			var mark2 = paper.path(d2);
+			mark2.attr({
+				"stroke": "#F00",
+				"stroke-width": 9
+			});
+			mark2.attr("fill", "#00C");
+			
+			var d3 = "M200, 400 C225,300 325,300 350,400 S475, 500 900,100"
+			var mark3 = paper.path(d3);
+			mark3.attr({
+				"stroke": "#0F0",
+				"stroke-width": 5
+			});
+			
+			// Je had ook nog methode om langszaam kleur aan te passen 
+			// var d3 = "M370 100 C 370 50, 410 20, 450 50, 450, 130, 385, 150, 405, 100";
+			var d3 = 	"M400 100 C 450 50, 500 100, 450 150 " +
+								"S400, 100, 450 50, 500 100, 450 150 " +
+								"S410, 90, 450 60, 490 90, 440 140 " +
+								// "S410, 90, 440 60, 490 90, 440 140 " +
+								"S420, 80, 470 60";
+			var mark3 = paper.path(d3);
+			mark3.attr({
+				"stroke": "#0F0",
+				"stroke-width": 5
+			});
+			mark3.attr("fill", "#C0C");
+			
+			
+			var dot1 = paper.circle(50, 50, 20).attr({ "fill": "red" });
+			var dot2 = paper.circle(150, 50, 20).attr({ "fill": "orange", "opacity": "0.51"});
+
+			var anim1 = Raphael.animation({cx: 100, cy: 200, fill: "blue" }, 1000);
+			var anim2 = Raphael.animation({cx: 120, cy: 200, fill: "yellow" }, 1000);
+
+			function whenDone() {
+				console.log("We've arrived!");
+				if (swapper) {
+					anim = Raphael.animation({x: 250, y: 100, height: 125, fill: "yellow", transform: "R-15"}, 750, "easeOut", whenDone).delay(500);
+					// square.attr("transform", "R15");
+					swapper = false;
+				} else {
+					anim = Raphael.animation({x: 100, y: 250, height: 125, fill: "green", transform: "R15"}, 750, "easeOut", whenDone).delay(500);
+					// square.attr("transform", "R-15");
+					swapper = true;
+				}
+				square.animate(anim);
+			}
+			
+			var square = paper.rect(50, 50, 100, 25).attr({ "fill": "green" });
+			var anim = Raphael.animation({x: 250, y: 100, height: 125}, 750, "easeOut", whenDone).delay(500);
+			
+			dot2.animate(anim2);
+			dot1.animate(anim1);
+			square.animate(anim);
+			// square.animate(anim.repeat(30));
+		}
+		</script>
+	</head>
+  <body onload="test()">
+		<div id="demo"></div>
+  </body>
+</html>
+
