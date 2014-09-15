@@ -1,0 +1,18 @@
+
+.bestellingen {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.productieschema {
+  position: absolute;
+  top: 20px;
+  left: 500px;
+}
+
+.converter {
+  position: absolute;
+  top: 20px;
+  left: 300px;
+}

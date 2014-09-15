@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="nootje">
+<head>
+	<link type="text/css" rel="stylesheet" href="styling.css">
+	<script type="text/javascript" src="underscore.js"></script>
+	<script type="text/javascript" src="angular.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/bestellingen.js"></script>
+	<script type="text/javascript" src="scripts/productieschemas.js"></script>
+</head>
+<body>
+<div ng-controller="BestellingenController" class="bestellingen">
+    Lijst van alle bestellingen :
+		<table border="2">
+			<!-- De onderstaande track by $id($index) is workaround for local storage issue -->
+			<tr ng-repeat="bestelling in bestellingen track by $id($index)">
+				<td>
+					{{bestelling.nr}}
+				</td>
+				<td>
+					<table border="1">
+						<tr ng-repeat="bestelregel in bestelling.besteldata track by $id($index)">
+							<td>{{bestelregel.bestelregel}}</td>
+							<td>{{bestelregel.type}}</td>
+							<td>{{bestelregel.aantal}}</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<label ng-click="addBestelregel(bestelling.nr)"> Voeg regel toe! </label>
+				</td>
+			</tr>
+		</table>
+		<br />
+		<button ng-click="addBestelling()">Voeg bestelling toe</button>
+</div>
+
+<div ng-controller="ProductieSchemaController">
+	<div class="converter">
+		<label ng-click="convertBestelling2ProductieSchema()"> Converteer </label>
+	</div>
+	<div class="productieschema">
+    Lijst van alle dag productie :
+		<table border="2">
+			<tr ng-repeat="productieregel in productieschema">
+				<td>
+					{{productieregel.nr}}
+				</td>
+				<td>
+					<label ng-click="updateProductieSchema(productieregel.nr)"> Pas regel aan! </label>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</body>
+</html>
